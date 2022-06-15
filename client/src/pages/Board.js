@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import BoardList from "../components/Board/BoardList";
 import Modal from "../components/Board/Modal";
 import Pagination from "../components/Board/Pagination";
-import axios from "axios";
-import React from "react";
 
 function Board() {
   const [isOpen, setIsOpen] = useState(false);

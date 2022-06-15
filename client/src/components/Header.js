@@ -1,10 +1,8 @@
-import { Link } from 'react-router-dom';
-import { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { FaUserCircle, FaRegEdit } from 'react-icons/fa';
-import { RiLogoutBoxRLine } from 'react-icons/ri';
-import React from 'react';
+import { Link, useLocation } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { FaUserCircle, FaRegEdit } from "react-icons/fa";
+import { RiLogoutBoxRLine } from "react-icons/ri";
 
 function Header() {
   const location = useLocation();
@@ -16,18 +14,18 @@ function Header() {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);
   };
   useEffect(() => {
-    window.addEventListener('scroll', updateScroll);
+    window.addEventListener("scroll", updateScroll);
   });
 
   // 헤더 숨길 경로
-  const hideHeader = ['/login', '/signup'];
+  const hideHeader = ["/login", "/signup"];
   if (hideHeader.includes(location.pathname)) {
     return null;
   }
 
   if (isLogin) {
     return (
-      <header className={scrollPosition ? 'header-active' : ''}>
+      <header className={scrollPosition ? "header-active" : ""}>
         <div className="inner">
           <div className="navbar">
             <div className="navbar_logo" aria-hidden="true">
@@ -39,8 +37,8 @@ function Header() {
                   className="profile"
                   role="presentation"
                   onClick={() => setIsLogin(!isLogin)}
-                ></div>
-                <div className={isLogin ? 'list active' : 'list'}>
+                />
+                <div className={isLogin ? "list active" : "list"}>
                   <h3>
                     님 <br />
                     <span>환영합니다!</span>
@@ -72,28 +70,25 @@ function Header() {
     );
   }
   return (
-    <header className={scrollPosition ? 'header-active' : ''}>
+    <header className={scrollPosition ? "header-active" : ""}>
       <div className="inner">
         <div className="navbar">
           <div className="navbar_logo">
             <Link to="/">Ko-P&C</Link>
           </div>
           <ul className="navbar_menu">
-            <li className="non-login">
-              <Link to="/boards">Board</Link>
-            </li>
-            <li className="non-login">
-              <Link to="/about">About</Link>
-            </li>
-            <li className="non-login">
-              <Link to="/performance">Performance</Link>
-            </li>
-            <li className="non-login">
-              <Link to="/contact">Contact</Link>
-            </li>
-            <li className="non-login">
-              <Link to="/ceo">CEO</Link>
-            </li>
+            <Link to="/about">
+              <li className="non-login">회사소개</li>
+            </Link>
+            <Link to="/services">
+              <li className="non-login">사업소개</li>
+            </Link>
+            <Link to="/performance">
+              <li className="non-login">주요실적</li>
+            </Link>
+            <Link to="/boards">
+              <li className="non-login">고객지원</li>
+            </Link>
           </ul>
           {/* <GiHamburgerMenu className="navbar_togglebtn" /> */}
         </div>

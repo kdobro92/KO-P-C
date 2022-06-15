@@ -1,7 +1,6 @@
 import { MdLibraryBooks, MdConstruction } from "react-icons/md";
 import { FaConnectdevelop } from "react-icons/fa";
 import { GiStabbedNote } from "react-icons/gi";
-import React from "react";
 
 function Content() {
   return (

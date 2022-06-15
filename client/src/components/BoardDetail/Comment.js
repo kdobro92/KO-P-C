@@ -7,7 +7,7 @@ function Comment() {
         <div className="comment-title">댓글 3</div>
       </div>
       <div className="comment-sub-container">
-        <textarea className="comment-sub" placeholder="text"></textarea>
+        <textarea className="comment-sub" placeholder="text" />
       </div>
       <div className="save-container">
         <button type="button">등록</button>

@@ -1,23 +1,22 @@
+/* eslint-disable camelcase */
 import { AiOutlineClose } from "react-icons/ai";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Image from "./Image";
-import React from "react";
 
 function Modal({ setPosts, handleModal }) {
   const navigate = useNavigate();
   const inputTitleRef = useRef(null);
   const [put_titl_cont, setPut_titl_cont] = useState("");
   const [file_name, setFile_name] = useState("");
-  const [put_deta_cont, setPut_deata_cont] = useState("");
+  const [put_deta_cont, setPut_deta_cont] = useState("");
   const [list_count, setList_count] = useState(0);
   const totalData = {
     put_titl_cont,
     put_deta_cont,
     list_count,
   };
-
   useEffect(() => {
     if (inputTitleRef.current !== null) inputTitleRef.current.focus();
   }, []);
@@ -27,7 +26,7 @@ function Modal({ setPosts, handleModal }) {
   };
 
   const contentValueHandler = (e) => {
-    setPut_deata_cont(e.target.value);
+    setPut_deta_cont(e.target.value);
   };
 
   const totalRequestData = async () => {
@@ -48,7 +47,7 @@ function Modal({ setPosts, handleModal }) {
           data,
           {
             withCredentials: true,
-          }
+          },
         );
         if (result.status === 200) {
           await axios

@@ -14,7 +14,8 @@ function Content() {
           </div>
           <p>
             <span className="subTitle">Address : </span> 서울특별시 마포구
-            <br></br>서교동 449-14
+            <br />
+            서교동 449-14
           </p>
         </div>
         <div className="card-container">

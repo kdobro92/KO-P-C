@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 
 function Intro() {
@@ -13,19 +14,19 @@ function Intro() {
           </p>
           <p>과거의 경험을 바탕으로 새롭고</p>
           <p>유익한 것을 만들어 낼때 나옵니다.</p>
-          <br></br>
+          <br />
           <p>
             <span>KO-P&C는 신공법</span>으로
           </p>
           <p>건축설계와 시공, 토목과 디자인 등</p>
           <p>다양한 현장에서 앞서나가는 회사가 될것입니다.</p>
-          <br></br>
+          <br />
           <p>
             <span>직원들의 자유롭고 창조적인 아이디어</span>가
           </p>
           <p>작고 작은 물방울이 모여서 크나큰 바다를 이루듯이</p>
           <p>새로운 발명과 발전을 이룰 수 있습니다.</p>
-          <br></br>
+          <br />
           <p>
             <span>"혁신이 선구자와 모방자를 구분해 줄 수 있다"</span>는
           </p>

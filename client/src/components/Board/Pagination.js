@@ -1,6 +1,7 @@
+/* eslint-disable no-plusplus */
 import React from "react";
 
-const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
+function Pagination({ postsPerPage, totalPosts, paginate, currentPage }) {
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
@@ -22,7 +23,11 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
                   : null
               }
             >
-              <span onClick={() => paginate(number)} className="page-item">
+              <span
+                onClick={() => paginate(number)}
+                className="page-item"
+                aria-hidden="true"
+              >
                 {number}
               </span>
             </li>
@@ -31,6 +36,6 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
       </nav>
     </div>
   );
-};
+}
 
 export default Pagination;

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useRef, useState } from "react";
 import { MdPhotoCamera } from "react-icons/md";
 import { AiOutlinePlus } from "react-icons/ai";
