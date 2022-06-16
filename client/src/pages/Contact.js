@@ -5,7 +5,7 @@ import Map from "../components/Contact/Map";
 function Contact() {
   return (
     <>
-      <Thumbnail />
+      {/* <Thumbnail /> */}
       <Content />
       <Map />
     </>

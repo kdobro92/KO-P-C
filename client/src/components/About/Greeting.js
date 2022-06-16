@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-function Content() {
+function Greeting() {
   return (
     <section className="content-wrap">
       <h3 className="inner-title">인사말</h3>
@@ -52,4 +52,4 @@ function Content() {
   );
 }
 
-export default Content;
+export default Greeting;

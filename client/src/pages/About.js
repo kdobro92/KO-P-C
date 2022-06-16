@@ -1,11 +1,9 @@
 import Banner from "../components/About/Banner";
-import Content from "../components/About/Content";
 
 function About() {
   return (
-    <div>
+    <div className="total-container">
       <Banner />
-      <Content />
     </div>
   );
 }

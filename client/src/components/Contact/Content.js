@@ -6,7 +6,7 @@ import React from "react";
 
 function Content() {
   return (
-    <div className="content-container">
+    <div className="wrap-container">
       <div className="content-inner">
         <div className="card-container one">
           <div className="circle">
