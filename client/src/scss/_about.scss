@@ -1,0 +1,176 @@
+.total-container {
+  position: relative;
+  .wrap {
+    position: relative;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: fadeInDown 0.5s;
+    .thumbnail {
+      width: 100%;
+      height: 400px;
+      .intro-img {
+        height: 400px;
+        width: 100%;
+      }
+      .intro-container {
+        position: absolute;
+        color: #fff;
+        top: 50px;
+        .intro-title {
+          font-size: 40px;
+          font-family: "Play", "Noto Sans KR", "나눔고딕", NanumGothic,
+            "Nanum Gothic", "돋움", Dotum, Arial, sans-serif;
+        }
+      }
+
+      .banner-container {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 300px;
+        height: 100px;
+        width: 100%;
+        .banner-inner {
+          width: 85%;
+          height: 100px;
+          background-color: #fff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-bottom: 1px solid #d6d6d6;
+        }
+        .area-box {
+          width: 160px;
+          height: 100%;
+        }
+        .banner-menu {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #fff;
+          padding: 0 25px;
+          color: #585858;
+          font-size: 1.5em;
+          font-weight: 600;
+          line-height: 1.2;
+          letter-spacing: -0.65px;
+          height: 100%;
+          &:hover {
+            color: #3877b9;
+            cursor: pointer;
+            border-bottom: 3px solid #3877b9;
+          }
+
+          span {
+            color: #585858;
+          }
+          .banner {
+            background-color: #fff;
+            padding: 0 40px;
+            color: #585858;
+            font-size: 1.2em;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.65px;
+            &:hover {
+              color: #3877b9;
+            }
+          }
+        }
+        .focused {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #fff;
+          color: #3877b9;
+          transition: 0.3s;
+          font-size: 1.5em;
+          font-weight: 600;
+          line-height: 1.2;
+          letter-spacing: -0.65px;
+          padding: 0 25px;
+          height: 100%;
+          border-bottom: 3px solid #3877b9;
+        }
+      }
+      .desc {
+        width: 100%;
+        height: 800px;
+      }
+    }
+  }
+  .content-wrap {
+    animation: fadeInDown 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    width: 100%;
+    .inner-title {
+      font-size: 40px;
+      padding: 50px;
+    }
+    .box-container {
+      display: flex;
+      width: 70%;
+      height: 500px;
+      margin-bottom: 50px;
+      .inner-img {
+        flex: 4;
+        .ceo-img {
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .inner-content {
+        flex: 6;
+        background-color: #f6f7fa;
+        .inner {
+          height: 100%;
+          padding: 40px 0px 0px 80px;
+          .greeting {
+            font-size: 2.5vw;
+            background: -webkit-linear-gradient(#1796b0, #2020bf);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+            margin-bottom: 20px;
+          }
+          p {
+            margin-bottom: 1.5em;
+            font-size: 0.9vw;
+            color: #787878;
+            font-family: "Noto Sans KR", "Nanum Gothic";
+            .point-word {
+              color: red;
+            }
+          }
+          .sign {
+            margin-top: 20px;
+            font-size: 1.5vw;
+            font-weight: bold;
+            color: #212121;
+            font-family: "Noto Sans KR", "Nanum Gothic";
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 1024px) {
+  .inner-content {
+    .inner {
+      .greeting {
+        p {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
