@@ -1,5 +1,8 @@
 .total-container {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .wrap {
     position: relative;
     width: 100vw;
@@ -112,7 +115,7 @@
     width: 100%;
     .inner-title {
       font-size: 40px;
-      padding: 50px;
+      padding: 100px 0 50px 0;
     }
     .box-container {
       display: flex;

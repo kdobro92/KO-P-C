@@ -17,7 +17,16 @@
     width: 100%;
   }
 }
-
+.aaa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInDown 1s;
+  .content-title {
+    font-size: 40px;
+    padding: 100px 0 0 0;
+  }
+}
 .wrap-container {
   position: relative;
   width: 100%;

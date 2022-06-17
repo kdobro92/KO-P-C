@@ -1,0 +1,113 @@
+.his-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation: fadeInDown 0.5s;
+  .inner-container {
+    height: 350px;
+    width: 70%;
+    .his-img {
+      height: 100%;
+      width: 100%;
+      // box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      filter: brightness(70%);
+    }
+  }
+  .txt-in {
+    position: absolute;
+    top: 730px;
+    text-align: center;
+    font-size: 2.2em;
+    font-weight: 100;
+    line-height: 1.3em;
+    color: #fff;
+    span {
+      font-size: 0.7em;
+      letter-spacing: 1em;
+      display: block;
+      font-weight: 400;
+    }
+  }
+
+  .his-title {
+    text-align: center;
+    width: 100%;
+    font-size: 40px;
+    padding: 100px 0 50px 0;
+  }
+
+  .his-wrap {
+    height: 100%;
+    width: 100%;
+    .his-bx {
+      margin: 30px auto;
+      position: relative;
+      width: 960px;
+    }
+    .his-bx::before {
+      content: " ";
+      display: block;
+      position: absolute;
+      left: 50%;
+      margin-left: -2px;
+      width: 3px;
+      height: 100%;
+      background-color: #eee;
+      .his-data {
+        position: relative;
+        margin-bottom: 50px;
+        width: 50%;
+      }
+    }
+
+    .his-bx .his-data::before {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 20.5%;
+      left: 42.75%;
+      width: 75px;
+      height: 38px;
+      background-image: url(https://surc.or.kr/assets/icon-history-72e35a81b533771b1d598ddb83c79a8a761f88f76248478975f944c06bffefb8.png);
+      background-size: 78px 38px;
+    }
+
+    .his-bx .his-data:first-child {
+      padding-top: 10%;
+    }
+    .his-bx .his-data:nth-child(odd) {
+      padding-left: 59.5%;
+      padding-bottom: 10%;
+    }
+    .his-bx .his-data:nth-child(even) {
+      padding-bottom: 10%;
+    }
+
+    .his-bx .his-data h2 {
+      padding-top: 6px;
+      margin-bottom: 10px;
+      font-size: 1.5em;
+      color: #3f454b;
+      font-weight: bold;
+    }
+    .his-bx .his-data p {
+      font-size: 17px;
+      line-height: 1.7;
+      letter-spacing: 0.01rem;
+      color: #707984;
+      word-break: keep-all;
+    }
+
+    // .his-bx .his-data span::before {
+    //   // content: "images box";
+    //   position: absolute;
+    //   top: 50%;
+    //   left: 50%;
+    //   margin-top: -15px;
+    //   margin-left: -35px;
+    //   font-size: 14px;
+    // }
+  }
+}

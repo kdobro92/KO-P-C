@@ -10,19 +10,18 @@ function Thumbnail() {
         <img src={image} alt="main" />
       </div>
       <div className="main-sub-container">
-        <h1 className="main-sub">YOUR BEST BUSINESS PARTNER</h1>
+        <h1 className="main-sub">S-SRC METHOD OF CONSTRUCTION AND PROCESS</h1>
         <p className="main-small-sub">
-          A small river named Duden flows by their place and supplies it with
-          the necessary regelialia.
+          기성 H-형강 이용으로 수급이 용이하며 자재 중량 감소로 경제적이다.
         </p>
-        <Link to="/contact">
+        <Link to="/performance">
           <button type="button" className="contact-btn">
-            Contact us
+            주요실적
           </button>
         </Link>
         <Link to="/about">
           <button type="button" className="read-btn">
-            Read more
+            회사소개
           </button>
         </Link>
       </div>
