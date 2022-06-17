@@ -27,15 +27,15 @@
       color: rgba(0, 0, 0, 0.8);
     }
     .contact-btn {
-      background-color: #3877b9;
-      border: 1px solid #3877b9;
+      background-color: #263343;
+      border: 1px solid #263343;
       color: white;
-      font-size: 0.8vw;
+      font-size: 15px;
       font-weight: 600;
       border-radius: 5px;
       margin-right: 10px;
-      width: 5vw;
-      height: 5vh;
+      width: 100px;
+      height: 50px;
       &:hover {
         cursor: pointer;
         transform: translateY(-7px);
@@ -46,11 +46,12 @@
       background-color: #fff;
       border: 1px solid #fff;
       border-radius: 5px;
-      font-size: 0.8vw;
+      font-size: 15px;
       font-weight: 600;
-      color: #000000;
-      width: 5vw;
-      height: 5vh;
+      border-radius: 5px;
+      margin-right: 10px;
+      width: 100px;
+      height: 50px;
       &:hover {
         cursor: pointer;
         transform: translateY(-7px);
@@ -83,7 +84,7 @@
   }
   .service-title {
     padding-bottom: 20px;
-    font-size: 1vw;
+    font-size: 20px;
     font-weight: 600;
     color: #3877b9;
     letter-spacing: 1px;
@@ -92,7 +93,7 @@
   }
   .service-sub {
     font-family: "Roboto", Arial, sans-serif;
-    font-size: 2vw;
+    font-size: 30px;
     font-weight: 600;
     color: rgba(0, 0, 0, 0.7);
   }
@@ -167,7 +168,7 @@
       flex-direction: column;
       flex: 1;
       background-color: #f6f7fa;
-      font-size: 1vw;
+      font-size: 20px;
       span {
         color: #3877b9;
       }
@@ -175,48 +176,60 @@
   }
 }
 
-@media all and (max-width: 1024px) {
+@media all and (max-width: 768px) {
   .main-container {
-    width: 100%;
-    img {
-      width: 1024px;
-    }
     .main-sub-container {
-      width: 350px;
+      position: absolute;
+      top: 350px;
+      left: 200px;
+      display: block;
       .main-sub {
-        font-size: 40px;
-      }
-      .main-small-sub {
-        font-size: 20px;
+        font-size: 1.5rem;
       }
       .contact-btn {
-        width: 80px;
-        height: 50px;
+        width: 15vw;
+        height: 5vh;
+        margin-bottom: 10px;
       }
       .read-btn {
-        width: 80px;
-        height: 50px;
+        width: 15vw;
+        height: 5vh;
       }
     }
   }
-  .service-container {
-    width: 1024px;
+  .service-header {
+    .service-title {
+      font-size: 20px;
+    }
+    .service-sub {
+      font-size: 30px;
+    }
   }
+
+  .service-container {
+    height: 100%;
+    .service-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+  }
+
   .intro-container {
-    width: 1024px;
-    .intro-sub {
-      p {
-        font-size: 17px;
+    .intro-inner {
+      display: flex;
+      flex-direction: column;
+      .intro-image {
+        .intro-img {
+          height: 350px;
+        }
+      }
+      .intro-sub {
+        font-size: 15px;
+        padding: 15px;
       }
     }
   }
 }
-
-// @media all and (max-width: 768px) {
-//   .service-container {
-//     width: 768px;
-//   }
-//   .intro-container {
-//     width: 768px;
-//   }
-// }

@@ -26,7 +26,6 @@ function History() {
             <p>특허출원</p>
             <p>시공성 및 경제성 분석</p>
             <p>시공방법 고안 및 개선점 개발</p>
-            <span />
           </li>
           <li className="his-data">
             <h2>제 3단계 (2008. 06 ~ 2009. 02)</h2>
