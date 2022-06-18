@@ -8,7 +8,7 @@
   justify-content: center;
   background-color: #263343;
   padding: 8px 12px;
-  height: 80px;
+  // height: 80px;
   .nav-inner {
     width: 85%;
     display: flex;
@@ -45,17 +45,26 @@
       }
     }
   }
+
+  .navbar-toggleBtn {
+    position: absolute;
+    display: none;
+    right: 32px;
+    font-size: 30px;
+    color: #d49666;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .navbar {
-    padding: 20px 24px;
-    height: 320px;
+    // height: 320px;
     .nav-inner {
       flex-direction: column;
       align-items: flex-start;
+      padding: 10px 24px;
       width: 100%;
       .navbar-menu {
+        display: none;
         flex-direction: column;
         align-items: center;
         width: 100%;
@@ -70,6 +79,16 @@
           cursor: pointer;
           transition: 0.3s;
         }
+      }
+
+      .navbar-toggleBtn {
+        display: block;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .navbar-menu.active {
+        display: flex;
       }
     }
   }

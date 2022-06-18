@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
 
 function Header() {
   const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
 
+  const toggleHandler = () => {
+    setIsOpen(!isOpen);
+  };
   // 헤더 숨길 경로
   const hideHeader = ["/login", "/signup"];
   if (hideHeader.includes(location.pathname)) {
@@ -18,7 +23,7 @@ function Header() {
           <HiOutlineOfficeBuilding className="icon-logo" />
           <Link to="/">Ko-P&C</Link>
         </div>
-        <ul className="navbar-menu">
+        <ul className={isOpen ? "navbar-menu active" : "navbar-menu"}>
           <Link to="/about">
             <li className="non-login">회사소개</li>
           </Link>
@@ -32,6 +37,13 @@ function Header() {
             <li className="non-login">고객지원</li>
           </Link>
         </ul>
+        <div
+          className="navbar-toggleBtn"
+          onClick={toggleHandler}
+          aria-hidden="true"
+        >
+          <GiHamburgerMenu className="toggle-icon" />
+        </div>
       </div>
     </nav>
   );
