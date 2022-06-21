@@ -27,7 +27,7 @@ function Header() {
           <Link to="/about">
             <li className="non-login">회사소개</li>
           </Link>
-          <Link to="/services">
+          <Link to="/service">
             <li className="non-login">사업소개</li>
           </Link>
           <Link to="/performance">

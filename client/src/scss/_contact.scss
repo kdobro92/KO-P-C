@@ -93,3 +93,22 @@
     height: 100%;
   }
 }
+
+@media all and (max-width: 768px) {
+  .wrap-container {
+    height: 100%;
+    .content-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      .card-container {
+        width: 100%;
+      }
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+}

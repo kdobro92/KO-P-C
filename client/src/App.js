@@ -4,11 +4,12 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Main from "./pages/Main";
 import About from "./pages/About";
-import UnifiedMail from "./pages/UnifiedMail";
-import Board from "./pages/Board";
+import Service from "./pages/Service";
 import Contact from "./pages/Contact";
-import BoardDetail from "./pages/BoardDetail";
 import Performance from "./pages/Performance";
+import Board from "./pages/Board";
+import BoardDetail from "./pages/BoardDetail";
+import UnifiedMail from "./pages/UnifiedMail";
 import "./scss/style.scss";
 
 function App() {
@@ -18,10 +19,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/about" element={<About />} />
-        <Route path="/boards" element={<Board />} />
-        <Route path="/boards/:id" element={<BoardDetail />} />
+        <Route path="/service" element={<Service />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/performance" element={<Performance />} />
+        <Route path="/boards" element={<Board />} />
+        <Route path="/boards/:id" element={<BoardDetail />} />
         <Route path="/unifiedmail" element={<UnifiedMail />} />
       </Routes>
       <Footer />
