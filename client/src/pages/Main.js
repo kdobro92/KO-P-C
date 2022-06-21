@@ -1,5 +1,5 @@
-import Content from "../components/Main/Content";
 import Thumbnail from "../components/Main/Thumbnail";
+import Content from "../components/Main/Content";
 import Intro from "../components/Main/Intro";
 
 function Main() {

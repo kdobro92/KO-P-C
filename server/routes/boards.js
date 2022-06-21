@@ -51,7 +51,7 @@ const upload = multer({
 });
 
 let fileNames = [];
-router.post("/images", upload.array("file"), (req, res) => {
+router.post("/images", upload.array("file", 19), (req, res) => {
   req.files.forEach((v) => {
     fileNames.push(`${v.filename}`);
   });

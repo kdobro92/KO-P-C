@@ -27,15 +27,15 @@
       color: rgba(0, 0, 0, 0.8);
     }
     .contact-btn {
-      background-color: #3877b9;
-      border: 1px solid #3877b9;
+      background-color: #263343;
+      border: 1px solid #263343;
       color: white;
-      font-size: 0.8vw;
+      font-size: 15px;
       font-weight: 600;
       border-radius: 5px;
       margin-right: 10px;
-      width: 5vw;
-      height: 5vh;
+      width: 100px;
+      height: 50px;
       &:hover {
         cursor: pointer;
         transform: translateY(-7px);
@@ -46,11 +46,12 @@
       background-color: #fff;
       border: 1px solid #fff;
       border-radius: 5px;
-      font-size: 0.8vw;
+      font-size: 15px;
       font-weight: 600;
-      color: #000000;
-      width: 5vw;
-      height: 5vh;
+      border-radius: 5px;
+      margin-right: 10px;
+      width: 100px;
+      height: 50px;
       &:hover {
         cursor: pointer;
         transform: translateY(-7px);
@@ -59,84 +60,86 @@
     }
   }
 }
-.service-container {
-  margin-top: 50px;
-  width: 100%;
-  height: 560px;
-  animation: fadein 2s;
-  @keyframes fadein {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  .service-header {
+
+.slider-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .slider-container {
+    border: 1px solid black;
+    width: 80%;
+    height: 850px;
+    overflow: auto;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  .service-title {
-    padding-bottom: 20px;
-    font-size: 1vw;
-    font-weight: 600;
-    color: #3877b9;
-    letter-spacing: 1px;
-    position: relative;
-    font-family: "Roboto", Arial, sans-serif;
-  }
-  .service-sub {
-    font-family: "Roboto", Arial, sans-serif;
-    font-size: 2vw;
-    font-weight: 600;
-    color: rgba(0, 0, 0, 0.7);
-  }
-  .service-body {
-    width: 100%;
-    padding: 30px;
-    display: flex;
-    justify-content: space-around;
-    height: 430px;
-    .row-container {
-      height: 400px;
-      width: 300px;
-      text-align: center;
-      padding: 20px;
-    }
-    .row {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      margin: 0 auto;
-      background-color: #f6f7fa;
-      margin-bottom: 30px;
-      display: flex;
+    .slider-inner {
+      position: relative;
+      object-fit: cover;
+      overflow: hidden;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      .row-icon {
-        font-size: 70px;
+      width: 25%;
+      height: 40%;
+      border-radius: 5px;
+      margin: 30px 20px 65px 20px;
+      box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+      animation: fadeInDown 1s ease-in-out;
+      &:hover {
+        cursor: pointer;
+        transform: translateY(-10px);
+        transition: 0.5s;
       }
-      .row-circle {
+      .slider-card {
+        width: 100%;
+        height: 80%;
+        display: flex;
+        object-fit: cover;
+        .slider-img {
+          aspect-ratio: 350/200;
+          width: 100%;
+        }
+      }
+      .slider-card-sub {
+        padding: 10px;
+        font-size: 1em;
+        font-weight: 500;
+      }
+
+      .hide-btn {
+        display: none;
+      }
+
+      .slider-btn {
         position: absolute;
-        left: 300px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
+        width: 100%;
+        border: none;
+        top: calc(100% - 65%);
+        opacity: 0.7;
         z-index: 1;
-        background-color: #3877b9;
-        border: 5px solid #fff;
-        color: #fff;
-        font-size: 20px;
+        font-size: 40px;
+        color: rgb(255, 255, 255);
+        &:hover {
+          opacity: 1;
+        }
+        .prevBtn {
+          position: absolute;
+          left: 85%;
+          top: 10%;
+          &:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+          }
+        }
+        .nextBtn {
+          position: absolute;
+          right: 85%;
+          &:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+          }
+        }
       }
-    }
-    p {
-      font-size: 17px;
-      padding: 5px;
     }
   }
 }
@@ -167,7 +170,7 @@
       flex-direction: column;
       flex: 1;
       background-color: #f6f7fa;
-      font-size: 1vw;
+      font-size: 20px;
       span {
         color: #3877b9;
       }
@@ -175,48 +178,79 @@
   }
 }
 
-@media all and (max-width: 1024px) {
+@media all and (max-width: 768px) {
   .main-container {
-    width: 100%;
-    img {
-      width: 1024px;
-    }
     .main-sub-container {
-      width: 350px;
+      position: absolute;
+      top: 350px;
+      left: 200px;
+      display: block;
       .main-sub {
-        font-size: 40px;
-      }
-      .main-small-sub {
-        font-size: 20px;
+        font-size: 1.5rem;
       }
       .contact-btn {
-        width: 80px;
-        height: 50px;
+        width: 15vw;
+        height: 5vh;
+        margin-bottom: 10px;
       }
       .read-btn {
-        width: 80px;
-        height: 50px;
+        width: 15vw;
+        height: 5vh;
       }
     }
   }
-  .service-container {
-    width: 1024px;
+  .service-header {
+    .service-title {
+      font-size: 20px;
+    }
+    .service-sub {
+      font-size: 30px;
+    }
   }
+
+  .service-container {
+    height: 100%;
+    .service-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+  }
+
   .intro-container {
-    width: 1024px;
-    .intro-sub {
-      p {
-        font-size: 17px;
+    .intro-inner {
+      display: flex;
+      flex-direction: column;
+      .intro-image {
+        .intro-img {
+          height: 350px;
+        }
+      }
+      .intro-sub {
+        font-size: 15px;
+        padding: 15px;
       }
     }
   }
 }
 
-// @media all and (max-width: 768px) {
-//   .service-container {
-//     width: 768px;
-//   }
-//   .intro-container {
-//     width: 768px;
-//   }
-// }
+@media screen and (max-width: 768px) {
+  .slider-wrap {
+    display: flex;
+    flex-direction: column;
+    .slider-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+      .slider-inner {
+        width: 70%;
+      }
+    }
+  }
+}

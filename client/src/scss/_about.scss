@@ -9,7 +9,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    animation: fadeInDown 0.5s;
+    animation: fadeInDown 0.3s;
     .thumbnail {
       width: 100%;
       height: 400px;
@@ -56,7 +56,7 @@
           background-color: #fff;
           padding: 0 25px;
           color: #585858;
-          font-size: 1.5em;
+          font-size: 25px;
           font-weight: 600;
           line-height: 1.2;
           letter-spacing: -0.65px;
@@ -106,7 +106,7 @@
     }
   }
   .content-wrap {
-    animation: fadeInDown 0.5s;
+    animation: fadeInDown 0.3s;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -166,12 +166,45 @@
   }
 }
 
-@media all and (max-width: 1024px) {
-  .inner-content {
-    .inner {
-      .greeting {
-        p {
-          font-size: 20px;
+@media all and (max-width: 768px) {
+  .total-container {
+    .content-wrap {
+      height: 100%;
+      .inner-title {
+        font-size: 25px;
+      }
+
+      .box-container {
+        display: flex;
+        flex-direction: column;
+        height: 800px;
+        .inner-img {
+          height: 300px;
+        }
+
+        .inner-content {
+          .inner {
+            .greeting {
+              font-size: 30px;
+            }
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            .txt {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              p {
+                font-size: 14px;
+              }
+              .sign {
+                font-size: 20px;
+              }
+            }
+          }
         }
       }
     }
