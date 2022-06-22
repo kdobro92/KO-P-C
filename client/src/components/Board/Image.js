@@ -13,7 +13,7 @@ function Image({ setFile_name }) {
 
   const imageUploadHandler = (e) => {
     const nowSelectImageList = e.target.files;
-    if (Object.keys(nowSelectImageList).length > 19) {
+    if (Object.keys(nowSelectImageList).length > 20) {
       alert("이미지는 최대 20장까지 업로드 가능합니다.");
     }
     setFile_name(nowSelectImageList);
