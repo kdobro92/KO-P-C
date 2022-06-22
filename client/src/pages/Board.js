@@ -44,15 +44,13 @@ function Board() {
             <li>조회수</li>
           </ul>
           <div>
-            {currentPosts.length > 0 ? (
-              currentPosts.map((post) => {
-                return (
-                  <BoardList key={post.id} post={post} setPosts={setPosts} />
-                );
-              })
-            ) : (
-              <div className="no-data">There is no data to show :(</div>
-            )}
+            {currentPosts.length > 0
+              ? currentPosts.map((post) => {
+                  return (
+                    <BoardList key={post.id} post={post} setPosts={setPosts} />
+                  );
+                })
+              : null}
           </div>
         </div>
       </div>

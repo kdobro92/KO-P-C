@@ -1,13 +1,15 @@
 import { useRef, useState, useEffect } from "react";
 import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
-import { Navigate } from "react-router-dom";
+import { MdOutlineSubtitles } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
-function Post({ image, title }) {
+function Post({ id, image, title }) {
+  console.log(id);
   let parsedImages = null;
   if (image) {
     parsedImages = image.split(",");
   }
-
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const TOTAL_SLIDES = parsedImages.length - 1;
   const slideRef = useRef(null);
@@ -30,13 +32,17 @@ function Post({ image, title }) {
     }
   };
 
+  const postClickHanlder = () => {
+    navigate(`boards/${id}`);
+  };
+
   useEffect(() => {
     slideRef.current.style.transition = "all 0.5s ease-in-out";
     slideRef.current.style.transform = `translateX(-${currentSlide}00%)`;
   }, [currentSlide]);
 
   return (
-    <div className="slider-inner">
+    <div className="slider-inner" onClick={postClickHanlder} aria-hidden="true">
       <div className={parsedImages.length < 2 && "hide-btn"}>
         <button className="slider-btn" type="button" onClick={nextSlide}>
           <IoIosArrowDropright className="prevBtn" />
@@ -52,7 +58,12 @@ function Post({ image, title }) {
           );
         })}
       </div>
-      <div className="slider-card-sub">{title}</div>
+      <div className="slider-card-sub">
+        <div className="card-sub-half1">
+          <MdOutlineSubtitles className="card-sub-icon" />
+        </div>
+        <div className="card-sub-half2">{title}</div>
+      </div>
     </div>
   );
 }

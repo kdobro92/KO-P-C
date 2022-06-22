@@ -29,6 +29,7 @@ function Content() {
           return (
             <Post
               key={post.id}
+              id={post.id}
               image={post.file_name}
               title={post.put_titl_cont}
             />

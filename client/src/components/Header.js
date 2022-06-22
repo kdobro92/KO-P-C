@@ -30,11 +30,11 @@ function Header() {
           <Link to="/service">
             <li className="non-login">사업소개</li>
           </Link>
-          <Link to="/performance">
-            <li className="non-login">주요실적</li>
-          </Link>
           <Link to="/boards">
             <li className="non-login">고객지원</li>
+          </Link>
+          <Link to="/unifiedmail">
+            <li className="non-login">이메일</li>
           </Link>
         </ul>
         <div
