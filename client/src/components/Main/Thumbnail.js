@@ -12,11 +12,11 @@ function Thumbnail() {
       <div className="main-sub-container">
         <h1 className="main-sub">S-SRC METHOD OF CONSTRUCTION AND PROCESS</h1>
         <p className="main-small-sub">
-          기성 H-형강 이용으로 수급이 용이하며 자재 중량 감소로 경제적이다.
+          기성 H-형강 이용으로 수급이 용이하며 자재 중량 감소로 경제적이다
         </p>
-        <Link to="/performance">
+        <Link to="/service">
           <button type="button" className="contact-btn">
-            주요실적
+            사업소개
           </button>
         </Link>
         <Link to="/about">

@@ -8,32 +8,28 @@ function Pagination({ postsPerPage, totalPosts, paginate, currentPage }) {
   }
 
   return (
-    <div>
-      <nav>
-        <div className="pagination-container">
-          {pageNumbers.map((number) => (
-            <li
-              key={number}
-              style={
-                currentPage === number
-                  ? {
-                      color: "#ffffff",
-                      background: "#222",
-                    }
-                  : null
-              }
-            >
-              <span
-                onClick={() => paginate(number)}
-                className="page-item"
-                aria-hidden="true"
-              >
-                {number}
-              </span>
-            </li>
-          ))}
-        </div>
-      </nav>
+    <div className="pagination-container">
+      {pageNumbers.map((number) => (
+        <li
+          key={number}
+          style={
+            currentPage === number
+              ? {
+                  color: "#ffffff",
+                  background: "#222",
+                }
+              : null
+          }
+        >
+          <span
+            onClick={() => paginate(number)}
+            className="page-item"
+            aria-hidden="true"
+          >
+            {number}
+          </span>
+        </li>
+      ))}
     </div>
   );
 }

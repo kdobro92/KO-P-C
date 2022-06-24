@@ -47,11 +47,12 @@ const upload = multer({
       ); // 파일이름+시간+확장자명
     },
   }),
-  limits: 5 * 1024 * 1024,
+  limits: { fileSize: 5 * 1024 * 1024, files: 20 },
 });
 
 let fileNames = [];
-router.post("/images", upload.array("file", 20), (req, res) => {
+router.post("/images", upload.array("file"), (req, res) => {
+  console.log(upload);
   req.files.forEach((v) => {
     fileNames.push(`${v.filename}`);
   });
