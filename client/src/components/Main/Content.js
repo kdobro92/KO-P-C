@@ -4,7 +4,7 @@ import Post from "./Post";
 
 function Content() {
   const [posts, setPosts] = useState([]);
-  console.log(posts);
+
   useEffect(() => {
     const getAllPosts = async () => {
       try {

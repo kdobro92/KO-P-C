@@ -31,7 +31,7 @@ function Modal({ setPosts, handleModal }) {
 
   const totalRequestData = async () => {
     if (!put_titl_cont) {
-      alert("제목을 입력해주세요 ");
+      alert("제목을 입력해주세요");
     } else if (!put_deta_cont) {
       alert("내용을 입력해주세요");
     } else {

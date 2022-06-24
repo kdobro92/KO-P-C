@@ -4,7 +4,6 @@ import { MdOutlineSubtitles } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 function Post({ id, image, title }) {
-  console.log(id);
   let parsedImages = null;
   if (image) {
     parsedImages = image.split(",");

@@ -34,10 +34,14 @@ function Board() {
 
   return (
     <div className="whole-container">
+      <div className="board-thumbnail">
+        <img className="board-img" src="img/contact.png" alt="board" />
+      </div>
+      <h2 className="board-sub">건설사업관리</h2>
       <div className="board-container">
         <div className="boardList-container">
           <ul className="list-title">
-            <li>NO</li>
+            <li>번호</li>
             <li>제목</li>
             <li>작성자</li>
             <li>작성일</li>
