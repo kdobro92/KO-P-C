@@ -12,13 +12,19 @@ function Comment() {
 
   const addCommentHanlder = async () => {
     if (!put_deta_cont) {
-      alert("댓글을 입력해주세요");
+      alert("댓글을 등록해주세요.");
     }
     try {
       await axios
-        .post(`http://localhost:4000/boards/${id}/`, {
-          withCredentials: true,
-        })
+        .post(
+          `http://localhost:4000/comments`,
+          {
+            put_deta_cont,
+          },
+          {
+            withCredentials: true,
+          },
+        )
         .then((res) => {
           alert("등록 완료");
           console.log(res.data);
