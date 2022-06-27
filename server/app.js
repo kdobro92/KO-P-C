@@ -37,6 +37,7 @@ app.get("/", function (req, res) {
 
 // const authRouter = require("./routes/auth");
 const boardsRouter = require("./routes/boards");
+const commentsRouter = require("./routes/comments");
 // const usersRouter = require("./routes/users");
 // const chatRoomsRouter = require("./routes/chatRooms");
 // const chatContentsRouter = require("./routes/chatContents");
@@ -46,6 +47,7 @@ const boardsRouter = require("./routes/boards");
 // app.use("/auth", authRouter);
 // app.use("/users", usersRouter);
 app.use("/boards", boardsRouter);
+app.use("/comments", commentsRouter);
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 server.listen(HTTP_PORT, () => {

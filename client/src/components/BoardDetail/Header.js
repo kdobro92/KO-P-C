@@ -2,10 +2,10 @@ import { MdOutlineIosShare } from "react-icons/md";
 import { useState } from "react";
 
 function Header({ post }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleModal = () => {
-    setIsOpen(!isOpen);
-  };
+  // const [isOpen, setIsOpen] = useState(false);
+  // const handleModal = () => {
+  //   setIsOpen(!isOpen);
+  // };
 
   // const handleClickImg = () => {
   //   if (!post.image) {
@@ -26,7 +26,7 @@ function Header({ post }) {
         </p>
         <p>
           <span className="post-view">조회수 : </span>
-          {post.list_count}
+          {post.view_count}
         </p>
       </div>
     </div>

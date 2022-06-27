@@ -41,7 +41,7 @@ module.exports = {
       file_stor_loca_cont: {
         type: Sequelize.STRING,
       },
-      list_count: {
+      view_count: {
         type: Sequelize.INTEGER,
       },
       firs_crea_date_time: {

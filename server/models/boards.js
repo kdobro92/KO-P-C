@@ -24,7 +24,10 @@ module.exports = (sequelize, DataTypes) => {
       file_text_kind_code: DataTypes.STRING,
       file_name: DataTypes.STRING,
       file_stor_loca_cont: DataTypes.STRING,
-      list_count: DataTypes.INTEGER,
+      view_count: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
       firs_crea_date_time: DataTypes.INTEGER,
       firs_crea_empl: DataTypes.STRING,
       last_edit_date_time: DataTypes.INTEGER,

@@ -10,7 +10,7 @@ module.exports = {
           "put_titl_cont",
           "put_deta_cont",
           "file_name",
-          "list_count",
+          "view_count",
           "createdAt",
         ],
       });
@@ -29,13 +29,17 @@ module.exports = {
         attributes: [
           "put_titl_cont",
           "put_deta_cont",
-          "list_count",
+          "view_count",
           "file_name",
           "createdAt",
         ],
         where: { id },
       });
-      return res.status(200).json({ data: searchPost, message: "조회 성공" });
+      // console.log(searchPost.dataValues.view_count++);
+      return res.status(200).json({
+        data: searchPost,
+        message: "조회 성공",
+      });
     } catch (err) {
       return res.status(500).json({ message: "서버 에러" });
     }

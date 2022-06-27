@@ -11,11 +11,9 @@ function Modal({ setPosts, handleModal }) {
   const [put_titl_cont, setPut_titl_cont] = useState("");
   const [file_name, setFile_name] = useState("");
   const [put_deta_cont, setPut_deta_cont] = useState("");
-  const [list_count, setList_count] = useState(0);
   const totalData = {
     put_titl_cont,
     put_deta_cont,
-    list_count,
   };
   useEffect(() => {
     if (inputTitleRef.current !== null) inputTitleRef.current.focus();
