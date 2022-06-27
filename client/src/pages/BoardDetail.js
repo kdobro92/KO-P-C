@@ -18,7 +18,9 @@ function BoardDetail() {
             withCredentials: true,
           })
           .then((res) => {
-            setPosts(res.data.data);
+            if (res.status === 200) {
+              setPosts(res.data.data);
+            }
           });
       } catch (err) {
         console.log(err);

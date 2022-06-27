@@ -61,11 +61,10 @@ router.post("/images", upload.array("file"), (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const { put_titl_cont, put_deta_cont, list_count } = req.body;
+    const { put_titl_cont, put_deta_cont } = req.body;
     const createBoards = await boards.create({
       put_titl_cont,
       put_deta_cont,
-      list_count,
       file_name: `${fileNames}`,
       // userId: userInfo.id,
     });

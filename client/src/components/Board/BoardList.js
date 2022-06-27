@@ -1,12 +1,8 @@
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
 
-function BoardList({ post }) {
-  const [listCount, setListCount] = useState(0);
-  console.log(post);
-  const onClickBoardList = (e) => {
-    e.stopPropagation();
-    setListCount(listCount + 1);
+function BoardList({ post, setPosts }) {
+  const onClickBoardList = () => {
+    // setPosts(post.view_count + 1);
   };
 
   return (
@@ -20,7 +16,7 @@ function BoardList({ post }) {
         <div className="container">{post.put_titl_cont}</div>
         <div className="container">admin</div>
         <div className="list-date">{post.createdAt.slice(0, 10)}</div>
-        <div className="container">{listCount}</div>
+        <div className="container">{post.view_count}</div>
       </div>
     </Link>
   );
