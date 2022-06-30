@@ -14,7 +14,6 @@ function Board() {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   const handleModal = () => {
     setIsOpen(!isOpen);
   };

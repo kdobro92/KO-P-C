@@ -18,9 +18,8 @@ function BoardDetail() {
             withCredentials: true,
           })
           .then((res) => {
-            if (res.status === 200) {
-              setPosts(res.data.data);
-            }
+            setPosts(res.data.data);
+            console.log(res.data.data);
           });
       } catch (err) {
         console.log(err);
@@ -39,7 +38,7 @@ function BoardDetail() {
               <Image image={posts.file_name} />
             </div>
             <Content post={posts.put_deta_cont} />
-            <Comment />
+            <Comment post={posts} />
           </div>
         </div>
       ) : null}
