@@ -7,7 +7,7 @@ const { boards } = require("../models");
 // const { isAuthorized } = require("../controllers/tokenFunctions");
 
 router.get("/", boardsController.getAllPosts);
-router.get("/:id", boardsController.getPosts);
+router.get("/:id", boardsController.getPostDetail);
 // router.get("/user/:id", boardsController.getMyPosts);
 // router.delete("/:id", boardsController.deletePosts);
 // router.put("/:id", boardsController.changeBoardStatus);

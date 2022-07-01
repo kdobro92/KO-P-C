@@ -8,6 +8,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      user_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+          key: "id",
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      },
       board_id: {
         type: Sequelize.INTEGER,
         references: {
@@ -16,6 +25,9 @@ module.exports = {
         },
         onDelete: "cascade",
         onUpdate: "cascade",
+      },
+      put_deta_cont: {
+        type: Sequelize.STRING,
       },
       grp_code: {
         type: Sequelize.STRING,
@@ -33,9 +45,6 @@ module.exports = {
         type: Sequelize.STRING,
       },
       put_titl_cont: {
-        type: Sequelize.STRING,
-      },
-      put_deta_cont: {
         type: Sequelize.STRING,
       },
       file_text_kind_code: {

@@ -9,18 +9,37 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      // models.comments.belongsTo(models.users);
+      // models.comments.belongsTo(models.boards);
     }
   }
   comments.init(
     {
-      board_id: DataTypes.STRING,
+      user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "users",
+          key: "id",
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      },
+      board_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "boards",
+          key: "id",
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      },
+      put_deta_cont: DataTypes.STRING,
       grp_code: DataTypes.STRING,
       cust_id: DataTypes.STRING,
       put_seri_no: DataTypes.INTEGER,
       seri_no: DataTypes.INTEGER,
       stat_code: DataTypes.STRING,
       put_titl_cont: DataTypes.STRING,
-      put_deta_cont: DataTypes.STRING,
       file_text_kind_code: DataTypes.STRING,
       file_name: DataTypes.STRING,
       file_stor_loca_cont: DataTypes.STRING,

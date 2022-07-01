@@ -1,13 +1,12 @@
+/* eslint-disable no-restricted-globals */
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function Comment({ post }) {
   const text = "댓글을 입력해주세요";
   const board_id = post.id;
   const [put_deta_cont, setPut_deta_cont] = useState("");
-  const [comments, setComments] = useState([]);
-
   const commentValueHandler = (e) => {
     setPut_deta_cont(e.target.value);
   };
@@ -27,10 +26,8 @@ function Comment({ post }) {
           )
           .then((res) => {
             alert("등록 완료");
-            const totalComments = [...comments];
-            totalComments.push(res.data.data.put_deta_cont);
-            setComments(totalComments);
             setPut_deta_cont("");
+            location.reload();
           });
       } catch (err) {
         console.log(err);
@@ -41,7 +38,7 @@ function Comment({ post }) {
   return (
     <>
       <div className="comment-container">
-        <div className="comment-title">댓글 {comments.length}</div>
+        <div className="comment-title">댓글 {post.comments.length}</div>
       </div>
       <div className="comment-sub-container">
         <textarea
@@ -61,14 +58,9 @@ function Comment({ post }) {
           등록
         </button>
       </div>
-      {comments &&
-        comments.map((data) => {
-          return (
-            <li className="total-comment" key={data.id}>
-              {data}
-            </li>
-          );
-        })}
+      {post.comments.map((data) => {
+        return <li className="total-comment">{data.put_deta_cont}</li>;
+      })}
     </>
   );
 }

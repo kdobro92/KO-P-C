@@ -1,4 +1,4 @@
-const { users, boards, chatrooms } = require("../models");
+const { users, boards, comments } = require("../models");
 // const { isAuthorized } = require("./tokenFunctions");
 
 module.exports = {
@@ -22,11 +22,12 @@ module.exports = {
     }
   },
 
-  getPosts: async (req, res) => {
+  getPostDetail: async (req, res) => {
     try {
       const { id } = req.params;
       const searchPost = await boards.findOne({
         attributes: [
+          "id",
           "put_titl_cont",
           "put_deta_cont",
           "view_count",
@@ -34,8 +35,13 @@ module.exports = {
           "createdAt",
         ],
         where: { id },
+        include: [
+          {
+            model: comments,
+            attributes: ["put_deta_cont"],
+          },
+        ],
       });
-      // console.log(searchPost.dataValues.view_count++);
       return res.status(200).json({
         data: searchPost,
         message: "조회 성공",

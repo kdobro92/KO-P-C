@@ -41,8 +41,18 @@ module.exports = {
       file_stor_loca_cont: {
         type: Sequelize.STRING,
       },
+      user_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+          key: "id",
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      },
       view_count: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
       firs_crea_date_time: {
         type: Sequelize.INTEGER,
