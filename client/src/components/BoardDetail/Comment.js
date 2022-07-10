@@ -10,7 +10,6 @@ function Comment({ post }) {
   const commentValueHandler = (e) => {
     setPut_deta_cont(e.target.value);
   };
-
   const addCommentHanlder = async () => {
     if (!put_deta_cont) {
       alert("댓글을 등록해주세요.");
@@ -38,7 +37,7 @@ function Comment({ post }) {
   return (
     <>
       <div className="comment-container">
-        <div className="comment-title">댓글 {post.comments.length}</div>
+        {/* <div className="comment-title">댓글 {post.comments.length}</div> */}
       </div>
       <div className="comment-sub-container">
         <textarea
@@ -58,9 +57,9 @@ function Comment({ post }) {
           등록
         </button>
       </div>
-      {post.comments.map((data) => {
+      {/* {post.comments.map((data) => {
         return <li className="total-comment">{data.put_deta_cont}</li>;
-      })}
+      })} */}
     </>
   );
 }

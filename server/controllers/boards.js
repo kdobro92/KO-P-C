@@ -9,9 +9,15 @@ module.exports = {
           "id",
           "put_titl_cont",
           "put_deta_cont",
-          "file_name",
           "view_count",
+          "file_name",
           "createdAt",
+        ],
+        include: [
+          {
+            model: users,
+            attributes: ["user_email_addr"],
+          },
         ],
       });
       return res
@@ -26,6 +32,7 @@ module.exports = {
     try {
       const { id } = req.params;
       const searchPost = await boards.findOne({
+        where: { id },
         attributes: [
           "id",
           "put_titl_cont",
@@ -34,13 +41,15 @@ module.exports = {
           "file_name",
           "createdAt",
         ],
-        where: { id },
         include: [
           {
             model: comments,
             attributes: ["put_deta_cont"],
           },
         ],
+      });
+      await searchPost.increment({
+        view_count: 1,
       });
       return res.status(200).json({
         data: searchPost,

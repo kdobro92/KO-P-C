@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const boardsController = require("../controllers/boards");
 const multer = require("multer");
+const bcrypt = require("bcrypt");
 const path = require("path");
 const fs = require("fs");
-const { boards } = require("../models");
+const { boards, users } = require("../models");
 // const { isAuthorized } = require("../controllers/tokenFunctions");
 
 router.get("/", boardsController.getAllPosts);
@@ -52,7 +53,6 @@ const upload = multer({
 
 let fileNames = [];
 router.post("/images", upload.array("file"), (req, res) => {
-  console.log(upload);
   req.files.forEach((v) => {
     fileNames.push(`${v.filename}`);
   });
@@ -60,70 +60,66 @@ router.post("/images", upload.array("file"), (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  try {
-    const { put_titl_cont, put_deta_cont } = req.body;
-    const createBoards = await boards.create({
-      put_titl_cont,
-      put_deta_cont,
-      file_name: `${fileNames}`,
-      // userId: userInfo.id,
-    });
-    fileNames = []; // 지우면 안돼요..
-    return res.status(200).json({ data: createBoards, message: "작성 완료" });
-  } catch (err) {
-    return res.status(500).json({ message: "서버 에러" });
+  const { user_email_addr, user_pwd, put_titl_cont, put_deta_cont } = req.body;
+  const userInfo = await users.findOne({
+    where: {
+      user_email_addr,
+    },
+  });
+  if (userInfo && bcrypt.compareSync(user_pwd, userInfo.dataValues.user_pwd)) {
+    try {
+      const createBoards = await boards.create({
+        put_titl_cont,
+        put_deta_cont,
+        file_name: `${fileNames}`,
+        user_id: userInfo.id,
+      });
+      fileNames = []; // 지우면 안돼요..
+      return res.status(201).json({ data: createBoards, message: "작성 완료" });
+    } catch (err) {
+      return res.status(500).json({ message: "서버 에러" });
+    }
+  } else {
+    return res.send("<script>alert</script>");
   }
-  //   return res.status(401).json({ message: "권한 없음" });
 });
 
-// router.patch("/:id", async (req, res) => {
-//   const userInfo = isAuthorized(req);
-//   if (userInfo) {
-//     try {
-//       const { id } = req.params;
-//       const searchPost = await boards.findOne({
-//         where: { id },
-//       });
-//       if (searchPost) {
-//         const {
-//           title,
-//           description,
-//           tags,
-//           latitude,
-//           longitude,
-//           mainAddress,
-//           detailAddress,
-//           // status,
-//         } = req.body;
-//         if (userInfo.id === searchPost.dataValues.userId) {
-//           await boards.update(
-//             {
-//               title,
-//               description,
-//               tags,
-//               latitude,
-//               longitude,
-//               mainAddress,
-//               detailAddress,
-//               // status,
-//               image: `${fileNames}`,
-//               userId: userInfo.id,
-//             },
-//             {
-//               where: { id },
-//             }
-//           );
-//           fileNames = [];
-//           return res
-//             .status(200)
-//             .json({ data: searchPost, message: "수정 완료" });
-//         }
-//       } else {
-//         return res.status(400).json({ message: "권한이 없습니다." });
-//       }
-//     } catch (err) {
-//       return res.status(500).json({ message: "서버 에러" });
-//     }
-//   }
-// }),
-module.exports = router;
+router.patch("/:id", async (req, res) => {
+  const { user_email_addr, user_pwd, put_titl_cont, put_deta_cont } = req.body;
+  // 유저 정보 조회
+  const userInfo = await users.findOne({
+    where: {
+      user_email_addr,
+    },
+  });
+  // 해당 유저가 DB에 저장된 유저라면
+  if (userInfo && bcrypt.compareSync(user_pwd, userInfo.dataValues.user_pwd)) {
+    try {
+      // 아이디로 해당 포스트 정보 조회
+      const { id } = req.params;
+      const searchPost = await boards.findOne({
+        where: { id },
+      });
+      // 조회되는 포스트가 있다면
+      if (searchPost) {
+        // if (userInfo.id === searchPost.dataValues.user_id) {
+        await boards.update(
+          {
+            put_titl_cont,
+            put_deta_cont,
+            image: `${fileNames}`,
+            user_id: userInfo.id,
+          },
+          {
+            where: { id },
+          }
+        );
+        fileNames = [];
+        return res.status(200).json({ data: searchPost, message: "수정 완료" });
+      }
+    } catch (err) {
+      return res.status(500).json({ message: "서버 에러" });
+    }
+  }
+}),
+  (module.exports = router);

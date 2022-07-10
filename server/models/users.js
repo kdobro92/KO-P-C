@@ -15,13 +15,15 @@ module.exports = (sequelize, DataTypes) => {
     {
       user_email_addr: DataTypes.STRING,
       user_pwd: DataTypes.STRING,
-      user_nick: DataTypes.STRING,
       memb_seri_no: DataTypes.INTEGER,
       grop_code: DataTypes.STRING,
       cust_id: DataTypes.STRING,
       stat_code: DataTypes.STRING,
       cust_numb_divi_code: DataTypes.STRING,
-      memb_regi_divi_code: DataTypes.STRING,
+      memb_regi_divi_code: {
+        type: DataTypes.STRING,
+        defaultValue: "MA",
+      },
       cell_id_yn: DataTypes.STRING,
       cust_firs_name: DataTypes.STRING,
       cust_last_name: DataTypes.STRING,

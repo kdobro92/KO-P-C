@@ -10,15 +10,9 @@ function Signup() {
   // const history = useHistory();
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const [userNickname, SetUserNickname] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isShow, setIsShow] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
-  // 회원가입 성공 시 모달 창
-  const openRegisterModal = () => {
-    setIsOpen(true);
-  };
 
   // 유효한 이메일을 입력했는지 확인
   const isValidEmail = () => {
@@ -49,26 +43,25 @@ function Signup() {
   };
 
   // 유효한 닉네임을 입력했는지 확인
-  const isVaildNickname = () => {
-    const nicknameFailMessage = document.querySelector(
-      ".nickname-invalid-message",
-    );
-    // 특수문지 제외 2자 ~ 20자
-    if (/^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,20}$/.test(userNickname)) {
-      nicknameFailMessage.classList.add("hide");
-    } else {
-      nicknameFailMessage.classList.remove("hide");
-    }
-  };
+  // const isVaildNickname = () => {
+  //   const nicknameFailMessage = document.querySelector(
+  //     ".nickname-invalid-message",
+  //   );
+  //   // 특수문지 제외 2자 ~ 20자
+  //   if (/^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,20}$/.test(userNickname)) {
+  //     nicknameFailMessage.classList.add("hide");
+  //   } else {
+  //     nicknameFailMessage.classList.remove("hide");
+  //   }
+  // };
 
   // 4가지 항목을 모두 입력했는지 확인
   // 계정 만들기 버튼을 클릭 시 서버로 회원가입 정보를 요청
   const handleSignup = () => {
     const user_email_addr = userEmail;
     const user_pwd = userPassword;
-    const user_nick = userNickname;
     // 4개 항목 중 하나라도 입력이 안된 상태에서 계정 생성 할 시
-    if (!userEmail || !userPassword || !userNickname) {
+    if (!user_email_addr || !user_pwd) {
       setErrorMessage("모든 항목은 필수입니다.");
     } else {
       axios
@@ -76,7 +69,6 @@ function Signup() {
           `http://localhost:4000/auth/signup`,
           {
             user_email_addr,
-            user_nick,
             user_pwd,
           },
           {
@@ -85,7 +77,7 @@ function Signup() {
         )
         .then((res) => {
           alert("회원가입이 완료되었습니다.");
-          navigate("/login");
+          navigate("/");
         });
     }
   };
@@ -124,14 +116,14 @@ function Signup() {
               비밀번호는 최소 8자 이상, 알파벳과 숫자 및 특수문자를 포함해야
               합니다.
             </div>
-            <input
+            {/* <input
               type="text"
               placeholder="닉네임"
               onChange={(e) => isVaildNickname(SetUserNickname(e.target.value))}
             />
             <div className="nickname-invalid-message hide">
               유효한 닉네임을 입력해 주시기 바랍니다.
-            </div>
+            </div> */}
           </form>
           <div className="btn-container">
             <Link to="/login">

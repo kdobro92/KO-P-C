@@ -2,20 +2,6 @@ import { MdOutlineIosShare } from "react-icons/md";
 import { useState } from "react";
 
 function Header({ post }) {
-  // const [isOpen, setIsOpen] = useState(false);
-  // const handleModal = () => {
-  //   setIsOpen(!isOpen);
-  // };
-
-  // const handleClickImg = () => {
-  //   if (!post.image) {
-  //     window.open(
-  //       "https://static.nid.naver.com/images/web/user/default.png?type=s160",
-  //     );
-  //   }
-  //   window.open(imagesPath + post.image);
-  // };
-
   return (
     <div className="header-container">
       <div className="post-title">{post.put_titl_cont}</div>

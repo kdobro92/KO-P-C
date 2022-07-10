@@ -12,14 +12,14 @@ const {
 
 module.exports = {
   signup: async (req, res) => {
-    const { user_email_addr, user_nick, user_pwd } = req.body;
+    const { user_email_addr, user_pwd } = req.body;
 
-    if (!user_email_addr || !user_nick || !user_pwd) {
+    if (!user_email_addr || !user_pwd) {
       return res.json({ message: "필수 항목을 입력하세요." });
     }
     try {
       const userInfo = await users.findOne({
-        where: { user_email_addr, user_nick },
+        where: { user_email_addr },
       });
       // 비밀번호 암호화하기
       const hashed = await bcrypt.hash(user_pwd, 10);
@@ -31,8 +31,6 @@ module.exports = {
       } else {
         await users.create({
           user_email_addr,
-          // role: 0,
-          user_nick,
           user_pwd: hashed,
         });
         return res.status(201).json({ message: "가입 완료" });

@@ -18,10 +18,10 @@ const path = require("path");
 try {
   // 폴더 저장 경로가 존재하지 않는 경우 폴더 만들어주기
   console.log("uploads 폴더가 존재합니다.");
-  fs.accessSync("uploads");
+  fs.accessSync("images");
 } catch (err) {
   console.log("uploads 폴더를 생성합니다.");
-  fs.mkdirSync("uploads");
+  fs.mkdirSync("images");
 }
 
 const upload = multer({
@@ -29,7 +29,7 @@ const upload = multer({
     // 나중에는 반드시 S3로 대체해야한다. 재배포마다 용량 잡아먹어서 문제된다.
     destination(req, file, done) {
       console.log("여기서 에러");
-      done(null, "uploads");
+      done(null, "images");
     },
     filename(req, file, done) {
       //   const ext = path.extname(file.originalname); // 확장자 추출(.png)

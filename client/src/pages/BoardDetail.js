@@ -9,7 +9,6 @@ import Comment from "../components/BoardDetail/Comment";
 function BoardDetail() {
   const { id } = useParams();
   const [posts, setPosts] = useState("");
-
   useEffect(() => {
     const getPostDetail = async () => {
       try {
@@ -36,7 +35,7 @@ function BoardDetail() {
             <div className="slider-container">
               <Image image={posts.file_name} />
             </div>
-            <Content post={posts.put_deta_cont} />
+            <Content post={posts} setPosts={setPosts} />
             <Comment post={posts} />
           </div>
         </div>

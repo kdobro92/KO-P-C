@@ -9,7 +9,7 @@ function Content() {
     const getAllPosts = async () => {
       try {
         await axios
-          .get("http://localhost:4000/boards", {
+          .get(`http://localhost:4000/boards`, {
             withCredentials: true,
           })
           .then((res) => {

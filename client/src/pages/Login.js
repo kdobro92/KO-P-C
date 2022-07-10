@@ -32,15 +32,14 @@ function Login() {
   const requestLogin = () => {
     const user_email_addr = userEmail;
     const user_pwd = userPassword;
-    // const { user_email_addr, user_pwd } = loginInfo;
-    // console.log(user_email_addr);
+
     if (!user_email_addr || !user_pwd) {
       setErrorMessage("이메일과 비밀번호를 입력하세요");
       return;
     }
     axios
       .post(
-        "http://localhost:4000/auth/login",
+        `${process.env.REACT_APP_API_URL}auth/login`,
         { user_email_addr, user_pwd },
         { withCredentials: true },
       )
