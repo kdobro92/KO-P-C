@@ -1,11 +1,18 @@
 import { MdOutlineDescription } from "react-icons/md";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Modal from "./Modal";
+import DelModal from "./DelModal";
 
 function Content({ post, setPosts }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDelOpen, setIsDelOpen] = useState(false);
+
   const handleModal = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleDelModal = () => {
+    setIsDelOpen(!isDelOpen);
   };
 
   return (
@@ -32,7 +39,14 @@ function Content({ post, setPosts }) {
               >
                 수정
               </button>
-              <button type="button" className="delete-btn">
+              {isDelOpen ? (
+                <DelModal post={post} handleDelModal={handleDelModal} />
+              ) : null}
+              <button
+                type="button"
+                className="delete-btn"
+                onClick={handleDelModal}
+              >
                 삭제
               </button>
             </div>

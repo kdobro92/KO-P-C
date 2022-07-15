@@ -33,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: "cascade",
         onUpdate: "cascade",
       },
+      user_nickname: DataTypes.STRING,
       put_deta_cont: DataTypes.STRING,
       grp_code: DataTypes.STRING,
       cust_id: DataTypes.STRING,

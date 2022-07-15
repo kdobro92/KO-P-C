@@ -26,6 +26,9 @@ module.exports = {
         onDelete: "cascade",
         onUpdate: "cascade",
       },
+      user_nickname: {
+        type: Sequelize.STRING,
+      },
       put_deta_cont: {
         type: Sequelize.STRING,
       },

@@ -14,6 +14,9 @@ module.exports = {
       user_pwd: {
         type: Sequelize.STRING,
       },
+      user_nickname: {
+        type: Sequelize.STRING,
+      },
       memb_seri_no: {
         type: Sequelize.STRING,
       },

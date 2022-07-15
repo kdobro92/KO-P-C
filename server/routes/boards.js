@@ -4,14 +4,10 @@ const multer = require("multer");
 const bcrypt = require("bcrypt");
 const path = require("path");
 const fs = require("fs");
-const { boards, users } = require("../models");
-// const { isAuthorized } = require("../controllers/tokenFunctions");
+const { boards, users, sequelize } = require("../models");
 
 router.get("/", boardsController.getAllPosts);
 router.get("/:id", boardsController.getPostDetail);
-// router.get("/user/:id", boardsController.getMyPosts);
-// router.delete("/:id", boardsController.deletePosts);
-// router.put("/:id", boardsController.changeBoardStatus);
 
 // 이미지 업로드용 라우터
 try {
@@ -102,20 +98,52 @@ router.patch("/:id", async (req, res) => {
       });
       // 조회되는 포스트가 있다면
       if (searchPost) {
-        // if (userInfo.id === searchPost.dataValues.user_id) {
-        await boards.update(
-          {
-            put_titl_cont,
-            put_deta_cont,
-            image: `${fileNames}`,
-            user_id: userInfo.id,
-          },
-          {
-            where: { id },
-          }
-        );
-        fileNames = [];
-        return res.status(200).json({ data: searchPost, message: "수정 완료" });
+        if (userInfo.id === searchPost.dataValues.user_id) {
+          await boards.update(
+            {
+              put_titl_cont,
+              put_deta_cont,
+              file_name: `${fileNames}`,
+              user_id: userInfo.id,
+            },
+            {
+              where: { id },
+            }
+          );
+          fileNames = [];
+          return res
+            .status(200)
+            .json({ data: searchPost, message: "수정 완료" });
+        }
+      }
+    } catch (err) {
+      return res.status(500).json({ message: "서버 에러" });
+    }
+  } else {
+    return res.send("<script>alert</script>");
+  }
+});
+
+router.post("/:id", async (req, res) => {
+  const { user_email_addr, user_pwd } = req.body;
+  const userInfo = await users.findOne({
+    where: {
+      user_email_addr,
+    },
+  });
+  if (userInfo && bcrypt.compareSync(user_pwd, userInfo.dataValues.user_pwd)) {
+    try {
+      const { id } = req.params;
+      const searchPost = await boards.findOne({
+        where: { id },
+      });
+      if (searchPost) {
+        if (userInfo.id === searchPost.dataValues.user_id) {
+          await boards.destroy({ where: { id } });
+          res.status(200).json({ message: "삭제 완료" });
+        } else {
+          return res.status(401).json({ message: "권한이 없습니다." });
+        }
       }
     } catch (err) {
       return res.status(500).json({ message: "서버 에러" });

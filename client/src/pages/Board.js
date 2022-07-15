@@ -16,7 +16,6 @@ function Board() {
   const handleModal = () => {
     setIsOpen(!isOpen);
   };
-
   useEffect(() => {
     getAllPosts();
   }, []);

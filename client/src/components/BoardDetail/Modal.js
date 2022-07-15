@@ -44,9 +44,9 @@ function Modal({ post, setPosts, handleModal }) {
     if (!user_email_addr || !user_pwd) {
       alert("이메일 또는 비빌번호를 입력해주세요");
     } else if (!put_titl_cont) {
-      alert("g");
+      alert("제목을 입력해주세요");
     } else if (!put_deta_cont) {
-      alert("h");
+      alert("내용을 입력해주세요");
     } else {
       try {
         const data = new FormData();
@@ -62,19 +62,19 @@ function Modal({ post, setPosts, handleModal }) {
             withCredentials: true,
           },
         );
-        if (result.status === 200) {
-          await axios
-            .patch(`http://localhost:4000/boards/${id}`, totalData, {
-              widthCredentials: true,
-            })
-            .then((res) => {
-              if (res.status === 200) {
-                alert("수정 완료");
-                setPosts(res.data.data);
-                location.reload();
-              }
-            });
-        }
+        await axios
+          .patch(`http://localhost:4000/boards/${id}`, totalData, {
+            widthCredentials: true,
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              alert("수정 완료");
+              setPosts(res.data.data);
+              location.reload();
+            } else {
+              alert("아이디와 비밀번호를 확인해주세요.");
+            }
+          });
       } catch (err) {
         console.log(err);
       }

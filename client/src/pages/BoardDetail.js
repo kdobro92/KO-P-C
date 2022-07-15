@@ -9,6 +9,7 @@ import Comment from "../components/BoardDetail/Comment";
 function BoardDetail() {
   const { id } = useParams();
   const [posts, setPosts] = useState("");
+
   useEffect(() => {
     const getPostDetail = async () => {
       try {
