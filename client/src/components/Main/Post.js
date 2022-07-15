@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { useRef, useState, useEffect } from "react";
 import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
 import { MdOutlineSubtitles } from "react-icons/md";
@@ -5,14 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 function Post({ id, image, title }) {
   let parsedImages = null;
-  if (image) {
-    parsedImages = image.split(",");
-  }
+  parsedImages = image.split(",");
+
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const TOTAL_SLIDES = parsedImages.length - 1;
   const slideRef = useRef(null);
-  const imagePath = "http://localhost:4000/images/";
+  const imagePath = `http://localhost:4000/images/`;
 
   const nextSlide = (e) => {
     e.stopPropagation();
@@ -51,9 +51,14 @@ function Post({ id, image, title }) {
         </button>
       </div>
       <div className="slider-card" ref={slideRef}>
-        {parsedImages.map((img) => {
+        {parsedImages.map((img, idx) => {
           return (
-            <img className="slider-img" src={imagePath + img} alt="profile" />
+            <img
+              key={idx}
+              className="slider-img"
+              src={imagePath + img}
+              alt="profile"
+            />
           );
         })}
       </div>

@@ -19,7 +19,6 @@ function BoardDetail() {
           })
           .then((res) => {
             setPosts(res.data.data);
-            console.log(res.data.data);
           });
       } catch (err) {
         console.log(err);
@@ -37,7 +36,7 @@ function BoardDetail() {
             <div className="slider-container">
               <Image image={posts.file_name} />
             </div>
-            <Content post={posts.put_deta_cont} />
+            <Content post={posts} setPosts={setPosts} />
             <Comment post={posts} />
           </div>
         </div>

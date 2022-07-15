@@ -117,10 +117,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      position: absolute;
       width: 50rem;
-      height: 29rem;
-      border-radius: 15px;
+      height: 33.5rem;
+      border-radius: 10px;
       background-color: #fff;
       @keyframes fadein {
         0% {
@@ -141,8 +140,8 @@
           .btn-close {
             position: relative;
             font-size: 15px;
-            left: 10px;
-            top: 10px;
+            left: 7px;
+            bottom: 20px;
             padding: 0 0 0 5px;
             border: none;
             border-radius: 100%;
@@ -158,8 +157,26 @@
             }
           }
         }
+        .user-container {
+          width: 90%;
+          display: flex;
+          justify-content: space-between;
+          .user-id_input,
+          .user-pwd_input {
+            width: 45%;
+            border-radius: 5px;
+            padding: 5px;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid rgb(211, 211, 211);
+            font-size: 12px;
+            &:focus {
+              outline: none;
+              border: 1px solid #adadad;
+            }
+          }
+        }
         .modal-title-container {
-          margin-top: 15px;
           width: 90%;
           .title-input {
             border-radius: 5px;
@@ -249,7 +266,6 @@
           }
         }
         .btn-container {
-          margin-top: 20px;
           width: 90%;
           display: flex;
           justify-content: end;

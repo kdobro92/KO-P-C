@@ -40,10 +40,15 @@ Object.keys(db).forEach((modelName) => {
   }
 });
 
-const { boards, users } = sequelize.models;
+const { boards, users, comments } = sequelize.models;
 
-users.hasMany(boards, { foreignKey: "userId" });
-boards.belongsTo(users, { foreignKey: "userId" });
+users.hasMany(boards, { foreignKey: "user_id" });
+boards.belongsTo(users, { foreignKey: "user_id" });
+
+boards.hasMany(comments, { foreignKey: "board_id" });
+comments.belongsTo(boards, { foreignKey: "board_id" });
+
+db.comments = require("./comments")(sequelize, Sequelize);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

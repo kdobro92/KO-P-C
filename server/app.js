@@ -30,22 +30,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", function (req, res) {
-  res.send("PROJECT SSRC");
+  res.send("PROJECT Ko-P&C");
 });
 
 // Router Collection
 
-// const authRouter = require("./routes/auth");
+const authRouter = require("./routes/auth");
+const usersRouter = require("./routes/users");
 const boardsRouter = require("./routes/boards");
 const commentsRouter = require("./routes/comments");
-// const usersRouter = require("./routes/users");
-// const chatRoomsRouter = require("./routes/chatRooms");
-// const chatContentsRouter = require("./routes/chatContents");
 
 // express use Routers
 
-// app.use("/auth", authRouter);
-// app.use("/users", usersRouter);
+app.use("/auth", authRouter);
+app.use("/users", usersRouter);
 app.use("/boards", boardsRouter);
 app.use("/comments", commentsRouter);
 app.use("/images", express.static(path.join(__dirname, "images")));
