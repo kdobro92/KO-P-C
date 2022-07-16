@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Navigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -22,7 +23,7 @@ function DelCommentModal({
       )
       .then((res) => {
         alert("삭제 완료");
-        Navigate(`/boards/${res.data.data.id}`);
+        location.reload();
       });
   };
   console.log(post.comments[0].id);
