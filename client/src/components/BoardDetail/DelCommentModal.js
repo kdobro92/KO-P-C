@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 function DelCommentModal({
@@ -10,16 +9,23 @@ function DelCommentModal({
   delCommentModal,
 }) {
   const { id } = useParams();
+  const totalData = { user_nickname };
+
   const delCommentHandler = async () => {
     await axios
-      .post(`http://localhost:4000/comments/${id}`, user_nickname, {
-        withCredentials: true,
-      })
+      .post(
+        `http://localhost:4000/comments/${post.comments[0].id}`,
+        totalData,
+        {
+          withCredentials: true,
+        },
+      )
       .then((res) => {
-        console.log(res);
+        alert("삭제 완료");
+        Navigate(`/boards/${res.data.data.id}`);
       });
   };
-  console.log(post.comments);
+  console.log(post.comments[0].id);
   return (
     <div className="modal-background">
       <div className="modal-recom">
