@@ -601,6 +601,7 @@
         margin-left: 20px;
       }
     }
+
     .right-recom {
       padding: 20px;
       font-size: 14px;
@@ -616,98 +617,97 @@
           cursor: pointer;
         }
       }
-
-      .modal-background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background-color: rgba(0, 0, 0, 0.1);
-        z-index: 1;
+    }
+  }
+  .modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .modal-recom {
+      animation: fadein 0.5s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20rem;
+      height: 9rem;
+      border-radius: 10px;
+      background-color: #fff;
+      @keyframes fadein {
+        0% {
+          transform: scale(0);
+        }
+        70% {
+          transform: scale(1);
+        }
+      }
+      .modal-view-recom {
+        width: 100%;
+        height: 100%;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        .modal-recom {
-          animation: fadein 0.5s;
+        .user-re-container {
+          width: 90%;
           display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 20rem;
-          height: 9rem;
-          border-radius: 10px;
-          background-color: #fff;
-          @keyframes fadein {
-            0% {
-              transform: scale(0);
-            }
-            70% {
-              transform: scale(1);
+          flex-direction: column;
+          .user-nick_re-input {
+            width: 100%;
+            border-radius: 5px;
+            padding: 5px;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid rgb(211, 211, 211);
+            font-size: 12px;
+            &:focus {
+              outline: none;
+              border: 1px solid #adadad;
             }
           }
-          .modal-view-recom {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            .user-re-container {
-              width: 90%;
-              display: flex;
-              flex-direction: column;
-              .user-nick_re-input {
-                width: 100%;
-                border-radius: 5px;
-                padding: 5px;
-                height: 30px;
-                border-radius: 5px;
-                border: 1px solid rgb(211, 211, 211);
-                font-size: 12px;
-                &:focus {
-                  outline: none;
-                  border: 1px solid #adadad;
-                }
-              }
+        }
+        .btn-re-container {
+          margin-top: 40px;
+          width: 90%;
+          display: flex;
+          justify-content: end;
+          .re-close-btn {
+            margin-right: 20px;
+            padding: 7px 20px 7px 20px;
+            font-size: 12px;
+            border-color: #ff2216;
+            background: #fff;
+            color: #ff2216;
+            border: solid 1px;
+            border-radius: 5px;
+            letter-spacing: 1pt;
+            &:hover {
+              background-color: #ff2216;
+              color: #fff;
+              transition: 0.3s;
+              font-weight: bold;
+              cursor: pointer;
             }
-            .btn-re-container {
-              margin-top: 40px;
-              width: 90%;
-              display: flex;
-              justify-content: end;
-              .re-close-btn {
-                margin-right: 20px;
-                padding: 7px 20px 7px 20px;
-                font-size: 12px;
-                border-color: #ff2216;
-                background: #fff;
-                color: #ff2216;
-                border: solid 1px;
-                border-radius: 5px;
-                letter-spacing: 1pt;
-                &:hover {
-                  background-color: #ff2216;
-                  color: #fff;
-                  transition: 0.3s;
-                  font-weight: bold;
-                  cursor: pointer;
-                }
-              }
-              .re-save-btn {
-                padding: 7px 20px 7px 20px;
-                font-size: 12px;
-                border-color: #adadad;
-                background: #fff;
-                color: #adadad;
-                border: solid 1px;
-                border-radius: 5px;
-                letter-spacing: 1pt;
-                &:hover {
-                  background-color: #adadad;
-                  color: #fff;
-                  font-weight: bold;
-                  cursor: pointer;
-                }
-              }
+          }
+          .re-save-btn {
+            padding: 7px 20px 7px 20px;
+            font-size: 12px;
+            border-color: #adadad;
+            background: #fff;
+            color: #adadad;
+            border: solid 1px;
+            border-radius: 5px;
+            letter-spacing: 1pt;
+            &:hover {
+              background-color: #adadad;
+              color: #fff;
+              font-weight: bold;
+              cursor: pointer;
             }
           }
         }
@@ -785,13 +785,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    .modal-recom {
+    .modal-edit-recom {
       animation: fadein 0.5s;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 20rem;
-      height: 9rem;
+      width: 30rem;
+      height: 20rem;
       border-radius: 10px;
       background-color: #fff;
       @keyframes fadein {
@@ -802,7 +802,7 @@
           transform: scale(1);
         }
       }
-      .modal-view-recom {
+      .modal-view-edit-recom {
         width: 100%;
         height: 100%;
         display: flex;
@@ -825,9 +825,23 @@
               border: 1px solid #adadad;
             }
           }
+          .edit-comment-input {
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 20px;
+            padding: 5px;
+            height: 170px;
+            border-radius: 5px;
+            border: 1px solid rgb(211, 211, 211);
+            font-size: 12px;
+            &:focus {
+              outline: none;
+              border: 1px solid #adadad;
+            }
+          }
         }
-        .btn-re-container {
-          margin-top: 40px;
+        .btn-re-edit-container {
+          margin-top: 30px;
           width: 90%;
           display: flex;
           justify-content: end;
