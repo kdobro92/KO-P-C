@@ -37,7 +37,7 @@ function BoardDetail() {
               <Image image={posts.file_name} />
             </div>
             <Content post={posts} setPosts={setPosts} />
-            <Comment post={posts} />
+            <Comment post={posts} setPosts={setPosts} />
           </div>
         </div>
       ) : null}

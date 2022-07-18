@@ -2,30 +2,32 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import axios from "axios";
 
-function DelCommentModal({
+function EditCommentModal({
   post,
   data,
   user_nickname,
+  put_deta_cont,
   userNickHandler,
-  delCommentModal,
+  commentValueHandler,
+  editCommentModal,
 }) {
-  const totalData = { user_nickname };
+  const totalData = { user_nickname, put_deta_cont };
   // del버튼을 누를때 해당 코멘트의 id넘버를 찾아서 요청해야함.
-  const delCommentHandler = async (commentId) => {
+  const editCommentHandler = async (commentId) => {
     await axios
-      .post(`http://localhost:4000/comments/${commentId}`, totalData, {
+      .patch(`http://localhost:4000/comments/${commentId}`, totalData, {
         withCredentials: true,
       })
       .then((res) => {
-        alert("삭제 완료");
         location.reload();
       });
+    console.log(commentId);
   };
 
   return (
     <div className="modal-background">
-      <div className="modal-recom">
-        <div className="modal-view-recom">
+      <div className="modal-edit-recom">
+        <div className="modal-view-edit-recom">
           <div className="modal-header">
             <button type="button" className="btn-close" />
           </div>
@@ -38,19 +40,27 @@ function DelCommentModal({
               value={user_nickname}
               maxLength={20}
             />
+            <input
+              className="edit-comment-input"
+              type="text"
+              placeholder="댓글을 입력해주세요"
+              onChange={commentValueHandler}
+              value={put_deta_cont}
+              maxLength={300}
+            />
           </div>
-          <div className="btn-re-container">
+          <div className="btn-re-edit-container">
             <button
               type="button"
               className="re-close-btn"
-              onClick={delCommentModal}
+              onClick={editCommentModal}
             >
               취소
             </button>
             <button
               type="button"
               className="re-save-btn"
-              onClick={() => delCommentHandler(data.id)}
+              onClick={() => editCommentHandler(data.id)}
             >
               확인
             </button>
@@ -61,4 +71,4 @@ function DelCommentModal({
   );
 }
 
-export default DelCommentModal;
+export default EditCommentModal;

@@ -6,8 +6,10 @@ import { BsPlusSquare } from "react-icons/bs";
 import { AiOutlineMinusSquare } from "react-icons/ai";
 import CommentModal from "./CommentModal";
 import DelCommentModal from "./DelCommentModal";
+import EditCommentModal from "./EditCommentModal";
 
 function Comment({ post }) {
+  console.log(post);
   const text = "댓글을 입력해주세요";
   const [isShow, setIsShow] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -25,6 +27,9 @@ function Comment({ post }) {
     setIsShow(!isShow);
   };
 
+  const editCommentModal = () => {
+    setIsEdit(!isEdit);
+  };
   const delCommentModal = () => {
     setIsDel(!isDel);
   };
@@ -75,10 +80,28 @@ function Comment({ post }) {
                 <div className="re-writer">작성자</div>
               </div>
               <div className="right-recom">
-                <span className="edit-recom-btn">수정</span>
+                {isEdit ? (
+                  <EditCommentModal
+                    data={data}
+                    user_nickname={user_nickname}
+                    userNickHandler={userNickHandler}
+                    put_deta_cont={put_deta_cont}
+                    commentValueHandler={commentValueHandler}
+                    editCommentModal={editCommentModal}
+                  />
+                ) : null}
+                <span
+                  className="edit-recom-btn"
+                  onClick={editCommentModal}
+                  aria-hidden="true"
+                >
+                  수정
+                </span>
                 {isDel ? (
                   <DelCommentModal
+                    key={data.id}
                     post={post}
+                    data={data}
                     user_nickname={user_nickname}
                     userNickHandler={userNickHandler}
                     delCommentModal={delCommentModal}
