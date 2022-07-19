@@ -13,9 +13,13 @@ function RecommentModal({ post, recomModalHanlder }) {
 
   const deleteHandler = async () => {
     await axios
-      .post(`http://localhost:4000/boards/${post.id}`, user_email_addr, {
-        withCredentials: true,
-      })
+      .post(
+        `${process.env.REACT_APP_API_URL}/boards/${post.id}`,
+        user_email_addr,
+        {
+          withCredentials: true,
+        },
+      )
       .then((res) => {
         if (res.status === 200) {
           alert("삭제 완료");

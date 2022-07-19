@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 function BoardList({ post }) {
-  console.log(post);
   return (
     <Link to={`/boards/${post.id}`}>
       <div className="list-container" aria-hidden="true">

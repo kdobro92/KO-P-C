@@ -13,9 +13,13 @@ function DelCommentModal({
   // del버튼을 누를때 해당 코멘트의 id넘버를 찾아서 요청해야함.
   const delCommentHandler = async (commentId) => {
     await axios
-      .post(`http://localhost:4000/comments/${commentId}`, totalData, {
-        withCredentials: true,
-      })
+      .post(
+        `${process.env.REACT_APP_API_URL}/comments/${commentId}`,
+        totalData,
+        {
+          withCredentials: true,
+        },
+      )
       .then((res) => {
         alert("삭제 완료");
         location.reload();

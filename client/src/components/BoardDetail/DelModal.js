@@ -20,7 +20,7 @@ function DelModal({ post, handleDelModal }) {
 
   const deleteHandler = async () => {
     await axios
-      .post(`http://localhost:4000/boards/${post.id}`, totalData, {
+      .post(`${process.env.REACT_APP_API_URL}/boards/${post.id}`, totalData, {
         withCredentials: true,
       })
       .then((res) => {

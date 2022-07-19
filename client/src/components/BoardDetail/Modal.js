@@ -3,13 +3,12 @@
 /* eslint-disable camelcase */
 import { AiOutlineClose } from "react-icons/ai";
 import { useState, useRef, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Image from "../Board/Image";
 
 function Modal({ post, setPosts, handleModal }) {
   const { id } = useParams();
-  const navigate = useNavigate();
   const inputTitleRef = useRef(null);
   const [user_email_addr, setUser_email_addr] = useState("");
   const [user_pwd, setUser_pwd] = useState("");
@@ -56,14 +55,14 @@ function Modal({ post, setPosts, handleModal }) {
           }
         }
         const result = await axios.post(
-          `http://localhost:4000/boards/images`,
+          `${process.env.REACT_APP_API_URL}/boards/images`,
           data,
           {
             withCredentials: true,
           },
         );
         await axios
-          .patch(`http://localhost:4000/boards/${id}`, totalData, {
+          .patch(`${process.env.REACT_APP_API_URL}/boards/${id}`, totalData, {
             widthCredentials: true,
           })
           .then((res) => {

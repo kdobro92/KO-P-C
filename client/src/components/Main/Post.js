@@ -12,7 +12,7 @@ function Post({ id, image, title }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const TOTAL_SLIDES = parsedImages.length - 1;
   const slideRef = useRef(null);
-  const imagePath = `http://localhost:4000/images/`;
+  const imagePath = `${process.env.REACT_APP_API_URL}/images/`;
 
   const nextSlide = (e) => {
     e.stopPropagation();

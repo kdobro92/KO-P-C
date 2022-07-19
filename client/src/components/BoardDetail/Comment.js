@@ -9,12 +9,12 @@ import DelCommentModal from "./DelCommentModal";
 import EditCommentModal from "./EditCommentModal";
 
 function Comment({ post }) {
-  console.log(post);
   const text = "댓글을 입력해주세요";
   const [isShow, setIsShow] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [isDel, setIsDel] = useState(false);
+  const [posts, setPosts] = useState(0);
   const [user_nickname, setUser_nickname] = useState("");
   const [put_deta_cont, setPut_deta_cont] = useState("");
   const userNickHandler = (e) => {
@@ -23,7 +23,8 @@ function Comment({ post }) {
   const commentValueHandler = (e) => {
     setPut_deta_cont(e.target.value);
   };
-  const recomShowHandler = () => {
+  const recomShowHandler = (index) => {
+    setPosts(index);
     setIsShow(!isShow);
   };
 
@@ -71,7 +72,7 @@ function Comment({ post }) {
           등록
         </button>
       </div>
-      {post.comments.map((data) => {
+      {post.comments.map((data, idx) => {
         return (
           <>
             <div className="recom-total">
@@ -121,7 +122,7 @@ function Comment({ post }) {
             <button
               type="button"
               className="re-comment"
-              onClick={recomShowHandler}
+              onClick={() => recomShowHandler(idx)}
             >
               {isShow ? (
                 <span>

@@ -15,9 +15,13 @@ function EditCommentModal({
   // del버튼을 누를때 해당 코멘트의 id넘버를 찾아서 요청해야함.
   const editCommentHandler = async (commentId) => {
     await axios
-      .patch(`http://localhost:4000/comments/${commentId}`, totalData, {
-        withCredentials: true,
-      })
+      .patch(
+        `${process.env.REACT_APP_API_URL}/comments/${commentId}`,
+        totalData,
+        {
+          withCredentials: true,
+        },
+      )
       .then((res) => {
         location.reload();
       });

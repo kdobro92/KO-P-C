@@ -40,7 +40,6 @@ module.exports = {
           "file_name",
           "createdAt",
         ],
-
         include: [
           {
             model: users,

@@ -66,7 +66,7 @@ function Signup() {
     } else {
       axios
         .post(
-          `http://localhost:4000/auth/signup`,
+          `${process.env.REACT_APP_API_URL}/auth/signup`,
           {
             user_email_addr,
             user_pwd,

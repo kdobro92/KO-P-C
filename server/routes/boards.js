@@ -62,15 +62,15 @@ router.post("/", async (req, res) => {
       user_email_addr,
     },
   });
-  if (userInfo && bcrypt.compareSync(user_pwd, userInfo.dataValues.user_pwd)) {
+  if (userInfo) {
     try {
       const createBoards = await boards.create({
         put_titl_cont,
         put_deta_cont,
         file_name: `${fileNames}`,
-        user_id: userInfo.id,
+        // user_id: userInfo.id,
       });
-      fileNames = []; // 지우면 안돼요..
+      fileNames = [];
       return res.status(201).json({ data: createBoards, message: "작성 완료" });
     } catch (err) {
       return res.status(500).json({ message: "서버 에러" });
@@ -88,8 +88,9 @@ router.patch("/:id", async (req, res) => {
       user_email_addr,
     },
   });
+  // && bcrypt.compareSync(user_pwd, userInfo.dataValues.user_pwd)
   // 해당 유저가 DB에 저장된 유저라면
-  if (userInfo && bcrypt.compareSync(user_pwd, userInfo.dataValues.user_pwd)) {
+  if (userInfo) {
     try {
       // 아이디로 해당 포스트 정보 조회
       const { id } = req.params;
@@ -131,7 +132,8 @@ router.post("/:id", async (req, res) => {
       user_email_addr,
     },
   });
-  if (userInfo && bcrypt.compareSync(user_pwd, userInfo.dataValues.user_pwd)) {
+  // && bcrypt.compareSync(user_pwd, userInfo.dataValues.user_pwd)
+  if (userInfo) {
     try {
       const { id } = req.params;
       const searchPost = await boards.findOne({
