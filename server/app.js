@@ -21,7 +21,11 @@ db.sequelize
 // app setting
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: [
+      "http://localhost:3000",
+      "http://ec2-52-78-8-92.ap-northeast-2.compute.amazonaws.com",
+      "http://s-src.s3-website.ap-northeast-2.amazonaws.com/",
+    ],
     credentials: true,
     methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS", "PUT"],
   })
@@ -30,7 +34,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", function (req, res) {
-  res.send("PROJECT Ko-P&C");
+  res.send("PROJECT SSRC");
 });
 
 // Router Collection

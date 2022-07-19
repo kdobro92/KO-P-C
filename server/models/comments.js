@@ -33,21 +33,21 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: "cascade",
         onUpdate: "cascade",
       },
-      user_nickname: DataTypes.STRING,
-      put_deta_cont: DataTypes.STRING,
-      grp_code: DataTypes.STRING,
-      cust_id: DataTypes.STRING,
-      put_seri_no: DataTypes.INTEGER,
-      seri_no: DataTypes.INTEGER,
-      stat_code: DataTypes.STRING,
-      put_titl_cont: DataTypes.STRING,
-      file_text_kind_code: DataTypes.STRING,
-      file_name: DataTypes.STRING,
-      file_stor_loca_cont: DataTypes.STRING,
-      firs_crea_date_time: DataTypes.INTEGER,
-      firs_crea_empl: DataTypes.STRING,
-      last_edit_date_time: DataTypes.INTEGER,
-      last_edit_empl: DataTypes.STRING,
+      user_nickname: DataTypes.STRING, //
+      put_deta_cont: DataTypes.STRING, //
+      put_titl_cont: DataTypes.STRING, //
+      grp_code: DataTypes.STRING, //
+      cust_id: DataTypes.STRING, //
+      put_seri_no: DataTypes.INTEGER, //
+      seri_no: DataTypes.INTEGER, //
+      stat_code: DataTypes.STRING, //
+      file_text_kind_code: DataTypes.STRING, //
+      file_name: DataTypes.STRING, //
+      file_stor_loca_cont: DataTypes.STRING, //
+      firs_crea_date_time: DataTypes.INTEGER, //
+      firs_crea_empl: DataTypes.STRING, //
+      last_edit_date_time: DataTypes.INTEGER, //
+      last_edit_empl: DataTypes.STRING, //
     },
     {
       sequelize,

@@ -13,7 +13,6 @@ const {
 module.exports = {
   signup: async (req, res) => {
     const { user_email_addr, user_pwd } = req.body;
-
     if (!user_email_addr || !user_pwd) {
       return res.json({ message: "필수 항목을 입력하세요." });
     }
@@ -22,6 +21,7 @@ module.exports = {
         where: { user_email_addr },
       });
       // 비밀번호 암호화하기
+      console.log(userInfo);
       const hashed = await bcrypt.hash(user_pwd, 10);
 
       if (userInfo) {

@@ -57,7 +57,7 @@ function Modal({ setPosts, handleModal }) {
           }
         }
         const result = await axios.post(
-          `http://localhost:4000/boards/images`,
+          `${process.env.REACT_APP_API_URL}/boards/images`,
           data,
           {
             withCredentials: true,
@@ -65,7 +65,7 @@ function Modal({ setPosts, handleModal }) {
         );
         if (result.status === 200) {
           await axios
-            .post(`http://localhost:4000/boards`, totalData, {
+            .post(`${process.env.REACT_APP_API_URL}/boards`, totalData, {
               widthCredentials: true,
             })
             .then((res) => {
@@ -77,7 +77,7 @@ function Modal({ setPosts, handleModal }) {
                 alert(
                   "등록되지 않은 사용자입니다. 회원가입 페이지로 이동합니다.",
                 );
-                navigate("/signup");
+                // navigate("/signup");
               }
             });
         }
