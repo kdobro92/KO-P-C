@@ -21,7 +21,7 @@ function CommentModal({
       try {
         await axios
           .post(
-            `${process.env.REACT_APP_API_URL}/comments`,
+            `${process.env.REACT_APP_API_URL}comments`,
             { put_deta_cont, board_id, user_nickname },
             {
               withCredentials: true,

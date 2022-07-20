@@ -14,7 +14,7 @@ function BoardDetail() {
     const getPostDetail = async () => {
       try {
         await axios
-          .get(`${process.env.REACT_APP_API_URL}/boards/${id}`, {
+          .get(`${process.env.REACT_APP_API_URL}boards/${id}`, {
             withCredentials: true,
           })
           .then((res) => {

@@ -21,11 +21,7 @@ db.sequelize
 // app setting
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "http://ec2-52-78-8-92.ap-northeast-2.compute.amazonaws.com",
-      "http://s-src.s3-website.ap-northeast-2.amazonaws.com/",
-    ],
+    origin: true,
     credentials: true,
     methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS", "PUT"],
   })

@@ -55,14 +55,14 @@ function Modal({ post, setPosts, handleModal }) {
           }
         }
         const result = await axios.post(
-          `${process.env.REACT_APP_API_URL}/boards/images`,
+          `${process.env.REACT_APP_API_URL}boards/images`,
           data,
           {
             withCredentials: true,
           },
         );
         await axios
-          .patch(`${process.env.REACT_APP_API_URL}/boards/${id}`, totalData, {
+          .patch(`${process.env.REACT_APP_API_URL}boards/${id}`, totalData, {
             widthCredentials: true,
           })
           .then((res) => {

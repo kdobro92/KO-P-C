@@ -57,7 +57,7 @@ function Modal({ setPosts, handleModal }) {
           }
         }
         const result = await axios.post(
-          `${process.env.REACT_APP_API_URL}/boards/images`,
+          `${process.env.REACT_APP_API_URL}boards/images`,
           data,
           {
             withCredentials: true,
@@ -65,7 +65,7 @@ function Modal({ setPosts, handleModal }) {
         );
         if (result.status === 200) {
           await axios
-            .post(`${process.env.REACT_APP_API_URL}/boards`, totalData, {
+            .post(`${process.env.REACT_APP_API_URL}boards`, totalData, {
               widthCredentials: true,
             })
             .then((res) => {

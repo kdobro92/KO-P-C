@@ -42,19 +42,6 @@ function Signup() {
     }
   };
 
-  // 유효한 닉네임을 입력했는지 확인
-  // const isVaildNickname = () => {
-  //   const nicknameFailMessage = document.querySelector(
-  //     ".nickname-invalid-message",
-  //   );
-  //   // 특수문지 제외 2자 ~ 20자
-  //   if (/^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,20}$/.test(userNickname)) {
-  //     nicknameFailMessage.classList.add("hide");
-  //   } else {
-  //     nicknameFailMessage.classList.remove("hide");
-  //   }
-  // };
-
   // 4가지 항목을 모두 입력했는지 확인
   // 계정 만들기 버튼을 클릭 시 서버로 회원가입 정보를 요청
   const handleSignup = () => {
@@ -66,10 +53,15 @@ function Signup() {
     } else {
       axios
         .post(
-          `${process.env.REACT_APP_API_URL}/auth/signup`,
+          `${process.env.REACT_APP_API_URL}auth/signup`,
           {
             user_email_addr,
             user_pwd,
+          },
+          {
+            headers: {
+              "content-type": "application/json",
+            },
           },
           {
             withCredentials: true,
