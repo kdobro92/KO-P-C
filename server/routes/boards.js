@@ -60,23 +60,25 @@ router.post("/", async (req, res) => {
   const userInfo = await users.findOne({
     where: {
       user_email_addr,
+      user_pwd,
     },
   });
-  if (userInfo) {
-    try {
+
+  try {
+    if (!userInfo) {
+      return res.status(401).send("<script>alert</script>");
+    } else {
       const createBoards = await boards.create({
         put_titl_cont,
         put_deta_cont,
         file_name: `${fileNames}`,
-        // user_id: userInfo.id,
+        user_id: userInfo.id,
       });
       fileNames = [];
       return res.status(201).json({ data: createBoards, message: "작성 완료" });
-    } catch (err) {
-      return res.status(500).json({ message: "서버 에러" });
     }
-  } else {
-    return res.send("<script>alert</script>");
+  } catch (err) {
+    return res.status(500).json({ message: "서버 에러" });
   }
 });
 
@@ -88,9 +90,8 @@ router.patch("/:id", async (req, res) => {
       user_email_addr,
     },
   });
-  // && bcrypt.compareSync(user_pwd, userInfo.dataValues.user_pwd)
   // 해당 유저가 DB에 저장된 유저라면
-  if (userInfo) {
+  if (userInfo && bcrypt.compareSync(user_pwd, userInfo.dataValues.user_pwd)) {
     try {
       // 아이디로 해당 포스트 정보 조회
       const { id } = req.params;
@@ -132,8 +133,7 @@ router.post("/:id", async (req, res) => {
       user_email_addr,
     },
   });
-  // && bcrypt.compareSync(user_pwd, userInfo.dataValues.user_pwd)
-  if (userInfo) {
+  if (userInfo && bcrypt.compareSync(user_pwd, userInfo.dataValues.user_pwd)) {
     try {
       const { id } = req.params;
       const searchPost = await boards.findOne({

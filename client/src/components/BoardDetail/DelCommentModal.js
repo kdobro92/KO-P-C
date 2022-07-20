@@ -14,7 +14,7 @@ function DelCommentModal({
   const delCommentHandler = async (commentId) => {
     await axios
       .post(
-        `${process.env.REACT_APP_API_URL}/comments/${commentId}`,
+        `${process.env.REACT_APP_API_URL}comments/${commentId}`,
         totalData,
         {
           withCredentials: true,

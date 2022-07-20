@@ -16,7 +16,7 @@ function EditCommentModal({
   const editCommentHandler = async (commentId) => {
     await axios
       .patch(
-        `${process.env.REACT_APP_API_URL}/comments/${commentId}`,
+        `${process.env.REACT_APP_API_URL}comments/${commentId}`,
         totalData,
         {
           withCredentials: true,
