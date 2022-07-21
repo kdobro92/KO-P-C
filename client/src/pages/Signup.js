@@ -7,12 +7,9 @@ function Signup() {
   // 올바른 이메일 형식 필수 입력
   // 3개 항목중 하나라도 미입력 후 계정 만들기 버튼 클릭 시 모든 항목 입력 메세지
   const navigate = useNavigate();
-  // const history = useHistory();
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [isShow, setIsShow] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
 
   // 유효한 이메일을 입력했는지 확인
   const isValidEmail = () => {
@@ -53,7 +50,7 @@ function Signup() {
     } else {
       axios
         .post(
-          `${process.env.REACT_APP_API_URL}auth/signup`,
+          `${process.env.REACT_APP_API_URL}/auth/signup`,
           {
             user_email_addr,
             user_pwd,
@@ -108,14 +105,6 @@ function Signup() {
               비밀번호는 최소 8자 이상, 알파벳과 숫자 및 특수문자를 포함해야
               합니다.
             </div>
-            {/* <input
-              type="text"
-              placeholder="닉네임"
-              onChange={(e) => isVaildNickname(SetUserNickname(e.target.value))}
-            />
-            <div className="nickname-invalid-message hide">
-              유효한 닉네임을 입력해 주시기 바랍니다.
-            </div> */}
           </form>
           <div className="btn-container">
             <Link to="/login">
