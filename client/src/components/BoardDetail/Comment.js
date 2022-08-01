@@ -14,6 +14,7 @@ function Comment({ post }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [isDel, setIsDel] = useState(false);
+  const [isNum, setIsNum] = useState(0);
   const [posts, setPosts] = useState(0);
   const [user_nickname, setUser_nickname] = useState("");
   const [put_deta_cont, setPut_deta_cont] = useState("");
@@ -28,10 +29,13 @@ function Comment({ post }) {
     setIsShow(!isShow);
   };
 
-  const editCommentModal = () => {
+  const editCommentModal = (commentId) => {
+    setIsNum(commentId);
     setIsEdit(!isEdit);
   };
-  const delCommentModal = () => {
+
+  const delCommentModal = (commentId) => {
+    setIsNum(commentId);
     setIsDel(!isDel);
   };
 
@@ -72,7 +76,7 @@ function Comment({ post }) {
           등록
         </button>
       </div>
-      {post.comments.map((data, idx) => {
+      {post.comments.map((data) => {
         return (
           <>
             <div className="recom-total">
@@ -83,7 +87,9 @@ function Comment({ post }) {
               <div className="right-recom">
                 {isEdit ? (
                   <EditCommentModal
+                    post={post}
                     data={data}
+                    isNum={isNum}
                     user_nickname={user_nickname}
                     userNickHandler={userNickHandler}
                     put_deta_cont={put_deta_cont}
@@ -93,7 +99,7 @@ function Comment({ post }) {
                 ) : null}
                 <span
                   className="edit-recom-btn"
-                  onClick={editCommentModal}
+                  onClick={() => editCommentModal(data.id)}
                   aria-hidden="true"
                 >
                   수정
@@ -103,6 +109,7 @@ function Comment({ post }) {
                     key={data.id}
                     post={post}
                     data={data}
+                    isNum={isNum}
                     user_nickname={user_nickname}
                     userNickHandler={userNickHandler}
                     delCommentModal={delCommentModal}
@@ -110,7 +117,7 @@ function Comment({ post }) {
                 ) : null}
                 <span
                   className="del-recom-btn"
-                  onClick={delCommentModal}
+                  onClick={() => delCommentModal(data.id)}
                   aria-hidden="true"
                 >
                   삭제
@@ -122,7 +129,7 @@ function Comment({ post }) {
             <button
               type="button"
               className="re-comment"
-              onClick={() => recomShowHandler(idx)}
+              onClick={() => recomShowHandler(data.id)}
             >
               {isShow ? (
                 <span>

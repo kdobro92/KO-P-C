@@ -1,7 +1,5 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 function CommentModal({
@@ -21,7 +19,7 @@ function CommentModal({
       try {
         await axios
           .post(
-            `${process.env.REACT_APP_API_URL}comments`,
+            `${process.env.REACT_APP_API_URL}/comments`,
             { put_deta_cont, board_id, user_nickname },
             {
               withCredentials: true,

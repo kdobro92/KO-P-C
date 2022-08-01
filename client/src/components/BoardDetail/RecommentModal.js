@@ -14,7 +14,7 @@ function RecommentModal({ post, recomModalHanlder }) {
   const deleteHandler = async () => {
     await axios
       .post(
-        `${process.env.REACT_APP_API_URL}boards/${post.id}`,
+        `${process.env.REACT_APP_API_URL}/boards/${post.id}`,
         user_email_addr,
         {
           withCredentials: true,

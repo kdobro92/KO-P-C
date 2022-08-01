@@ -60,12 +60,13 @@ router.post("/", async (req, res) => {
   const userInfo = await users.findOne({
     where: {
       user_email_addr,
-      user_pwd,
     },
   });
-
   try {
-    if (!userInfo) {
+    if (
+      !userInfo &&
+      bcrypt.compareSync(user_pwd, userInfo.dataValues.user_pwd)
+    ) {
       return res.status(401).send("<script>alert</script>");
     } else {
       const createBoards = await boards.create({

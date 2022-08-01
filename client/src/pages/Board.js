@@ -22,7 +22,7 @@ function Board() {
 
   const getAllPosts = async () => {
     await axios
-      .get(`${process.env.REACT_APP_API_URL}boards`, {
+      .get(`${process.env.REACT_APP_API_URL}/boards`, {
         withCredentials: true,
       })
       .then((res) => {

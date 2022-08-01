@@ -25,58 +25,46 @@ module.exports = {
 
   editComment: async (req, res) => {
     const { user_nickname, put_deta_cont } = req.body;
-    const userInfo = await comments.findOne({
-      where: {
-        user_nickname,
-      },
-    });
-    if (userInfo) {
-      try {
-        const { id } = req.params;
-        const searchComment = await comments.findOne({
-          where: { id },
-        });
-        if (searchComment) {
-          const isEdited = await comments.update(
-            {
-              put_deta_cont,
-            },
-            {
-              where: { id },
-            }
-          );
-          return res.status(200).json({ data: isEdited, message: "수정 완료" });
-        }
-      } catch (err) {
-        return res.status(500).json({ message: "서버 에러" });
+
+    try {
+      const { id } = req.params;
+      const searchComment = await comments.findOne({
+        where: { id },
+      });
+      if (searchComment.dataValues.user_nickname === user_nickname) {
+        const isEdited = await comments.update(
+          {
+            put_deta_cont,
+          },
+          {
+            where: { user_nickname, id },
+          }
+        );
+        return res.status(200).json({ data: isEdited, message: "수정 완료" });
+      } else {
+        return res.status(401).json({ message: "권한 없음" });
       }
-    } else {
-      return res.status(401).json({ message: "잘못된 정보 입력" });
+    } catch (err) {
+      return res.status(500).json({ message: "서버 에러" });
     }
   },
 
   deleteComment: async (req, res) => {
     const { user_nickname } = req.body;
-    const userInfo = await comments.findOne({
-      where: {
-        user_nickname,
-      },
-    });
-    if (userInfo) {
-      try {
-        const { id } = req.params;
-        const searchComment = await comments.findOne({
-          where: { id },
-        });
-        if (searchComment) {
-          await comments.destroy({ where: { id } });
-          res.status(200).json({ message: "삭제 완료" });
-        } else {
-          return res.status(401).json({ message: "권한이 없습니다." });
-        }
-      } catch (err) {
-        return res.status(500).json({ message: "서버 에러" });
+    // 유저 닉네임이 해당 코멘트의 작성자와 같다면
+    try {
+      const { id } = req.params;
+      const searchComment = await comments.findOne({
+        where: { id },
+      });
+      if (searchComment.dataValues.user_nickname === user_nickname) {
+        await comments.destroy({ where: { id } });
+        res.status(200).json({ message: "삭제 완료" });
+      } else {
+        return res.status(401).json({ message: "권한 없음" });
       }
+    } catch (err) {
+      return res.status(500).json({ message: "서버 에러" });
     }
   },
 };
