@@ -21,7 +21,7 @@ module.exports = {
         where: { user_email_addr },
       });
       // 비밀번호 암호화하기
-      // const hashed = await bcrypt.hash(user_pwd, 10);
+      const hashed = await bcrypt.hash(user_pwd, 10);
 
       if (userInfo) {
         return res
@@ -30,8 +30,7 @@ module.exports = {
       } else {
         await users.create({
           user_email_addr,
-          // user_pwd: hashed,
-          user_pwd,
+          user_pwd: hashed,
         });
         return res.status(201).json({ message: "가입 완료" });
       }

@@ -3,8 +3,7 @@
 import axios from "axios";
 
 function EditCommentModal({
-  post,
-  data,
+  isNum,
   user_nickname,
   put_deta_cont,
   userNickHandler,
@@ -12,20 +11,23 @@ function EditCommentModal({
   editCommentModal,
 }) {
   const totalData = { user_nickname, put_deta_cont };
-  // del버튼을 누를때 해당 코멘트의 id넘버를 찾아서 요청해야함.
+  // edit버튼을 누를때 해당 코멘트의 id넘버를 찾아서 요청해야함.
   const editCommentHandler = async (commentId) => {
-    await axios
-      .patch(
-        `${process.env.REACT_APP_API_URL}comments/${commentId}`,
-        totalData,
-        {
-          withCredentials: true,
-        },
-      )
-      .then((res) => {
-        location.reload();
-      });
-    console.log(commentId);
+    if (user_nickname === "") {
+      alert("닉네임을 입력해주세요.");
+    } else {
+      await axios
+        .patch(
+          `${process.env.REACT_APP_API_URL}/comments/${commentId}`,
+          totalData,
+          {
+            withCredentials: true,
+          },
+        )
+        .then((res) => {
+          location.reload();
+        });
+    }
   };
 
   return (
@@ -44,7 +46,7 @@ function EditCommentModal({
               value={user_nickname}
               maxLength={20}
             />
-            <input
+            <textarea
               className="edit-comment-input"
               type="text"
               placeholder="댓글을 입력해주세요"
@@ -64,7 +66,7 @@ function EditCommentModal({
             <button
               type="button"
               className="re-save-btn"
-              onClick={() => editCommentHandler(data.id)}
+              onClick={() => editCommentHandler(isNum)}
             >
               확인
             </button>

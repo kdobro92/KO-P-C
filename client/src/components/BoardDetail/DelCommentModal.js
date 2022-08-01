@@ -3,8 +3,7 @@
 import axios from "axios";
 
 function DelCommentModal({
-  post,
-  data,
+  isNum,
   user_nickname,
   userNickHandler,
   delCommentModal,
@@ -12,18 +11,23 @@ function DelCommentModal({
   const totalData = { user_nickname };
   // del버튼을 누를때 해당 코멘트의 id넘버를 찾아서 요청해야함.
   const delCommentHandler = async (commentId) => {
-    await axios
-      .post(
-        `${process.env.REACT_APP_API_URL}comments/${commentId}`,
-        totalData,
-        {
-          withCredentials: true,
-        },
-      )
-      .then((res) => {
-        alert("삭제 완료");
-        location.reload();
-      });
+    console.log(commentId);
+    if (user_nickname === "") {
+      alert("닉네임을 입력해주세요.");
+    } else {
+      await axios
+        .post(
+          `${process.env.REACT_APP_API_URL}/comments/${commentId}`,
+          totalData,
+          {
+            withCredentials: true,
+          },
+        )
+        .then((res) => {
+          alert("삭제 완료");
+          location.reload();
+        });
+    }
   };
 
   return (
@@ -54,7 +58,7 @@ function DelCommentModal({
             <button
               type="button"
               className="re-save-btn"
-              onClick={() => delCommentHandler(data.id)}
+              onClick={() => delCommentHandler(isNum)}
             >
               확인
             </button>

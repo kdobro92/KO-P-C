@@ -6,7 +6,7 @@ function Image({ image }) {
   const TOTAL_SLIDES = parsedImages.length - 1;
   const slideRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const imagesPath = `${process.env.REACT_APP_API_URL}images/`;
+  const imagesPath = `${process.env.REACT_APP_API_URL}/images/`;
 
   const nextSlide = () => {
     if (currentSlide >= TOTAL_SLIDES) {
