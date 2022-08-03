@@ -22,7 +22,7 @@ function Greeting() {
                 건물들로 가득차게 될
                 <br />
                 그곳에서 기간, 공간과 비용을 최소화하며 미적 감각까지 겸비한
-                <span className="point-word"> S-src 공법</span>의 사용은 여러분
+                <span className="point-word"> S-SRC 공법</span>의 사용은 여러분
                 <br />
                 회사를 21세기 건축환경을 제어하고 이끌어 갈 수 있는 글로벌
                 리더로 만들어 줄 것입니다.

@@ -8,7 +8,7 @@ function CommentModal({
   userNickHandler,
   put_deta_cont,
   setPut_deta_cont,
-  recomModalHanlder,
+  recomModalHandler,
 }) {
   const board_id = post.id;
 
@@ -57,7 +57,7 @@ function CommentModal({
             <button
               type="button"
               className="re-close-btn"
-              onClick={recomModalHanlder}
+              onClick={recomModalHandler}
             >
               취소
             </button>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Link as LinkRoll } from "react-scroll";
 import { useState } from "react";
 
 function Thumbnail() {
@@ -14,16 +15,16 @@ function Thumbnail() {
         <p className="main-small-sub">
           기성 H-형강 이용으로 수급이 용이하며 자재 중량 감소로 경제적이다
         </p>
-        <Link to="/service">
-          <button type="button" className="contact-btn">
-            사업소개
-          </button>
-        </Link>
         <Link to="/about">
-          <button type="button" className="read-btn">
+          <button type="button" className="contact-btn">
             회사소개
           </button>
         </Link>
+        <LinkRoll to="service-container" spy smooth>
+          <button type="button" className="read-btn">
+            사업소개
+          </button>
+        </LinkRoll>
       </div>
     </div>
   );

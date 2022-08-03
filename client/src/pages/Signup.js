@@ -7,8 +7,8 @@ function Signup() {
   // 올바른 이메일 형식 필수 입력
   // 3개 항목중 하나라도 미입력 후 계정 만들기 버튼 클릭 시 모든 항목 입력 메세지
   const navigate = useNavigate();
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const [user_email_addr, setUserEmail] = useState("");
+  const [user_pwd, setUserPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   // 유효한 이메일을 입력했는지 확인
@@ -17,7 +17,7 @@ function Signup() {
     // 계정@도메인.최상위도메인
     if (
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/.test(
-        userEmail,
+        user_email_addr,
       )
     ) {
       emailFailMessage.classList.add("hide");
@@ -32,7 +32,7 @@ function Signup() {
       ".password-invalid-message",
     );
     // 최소 8 자, 최소 하나의 알파벳, 하나의 숫자 및 하나의 특수 문자 :
-    if (/(?=.*\d)(?=.*[a-zA-ZS]).{8,}/.test(userPassword)) {
+    if (/(?=.*\d)(?=.*[a-zA-ZS]).{8,}/.test(user_pwd)) {
       passwordFailMessage.classList.add("hide");
     } else {
       passwordFailMessage.classList.remove("hide");
@@ -42,10 +42,8 @@ function Signup() {
   // 4가지 항목을 모두 입력했는지 확인
   // 계정 만들기 버튼을 클릭 시 서버로 회원가입 정보를 요청
   const handleSignup = () => {
-    const user_email_addr = userEmail;
-    const user_pwd = userPassword;
     // 4개 항목 중 하나라도 입력이 안된 상태에서 계정 생성 할 시
-    if (!user_email_addr || !user_pwd) {
+    if (user_email_addr === "" || user_pwd === "") {
       setErrorMessage("모든 항목은 필수입니다.");
     } else {
       axios
@@ -107,7 +105,7 @@ function Signup() {
             </div>
           </form>
           <div className="btn-container">
-            <Link to="/login">
+            <Link to="/">
               <button type="button" className="cancel_button">
                 취소
               </button>
@@ -122,8 +120,8 @@ function Signup() {
           </div>
           <div className="singup_go-to-login">
             이미 회원이신가요?
-            <Link to="/login">
-              <span className="signup_go-to-login-btn">로그인하기</span>
+            <Link to="/">
+              <span className="signup_go-to-login-btn">메인으로</span>
             </Link>
             <div className="alert-box">{errorMessage}</div>
           </div>
