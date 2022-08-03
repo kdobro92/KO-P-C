@@ -1,6 +1,7 @@
 import { MdLibraryBooks, MdConstruction } from "react-icons/md";
 import { FaConnectdevelop } from "react-icons/fa";
 import { GiStabbedNote } from "react-icons/gi";
+import { Link } from "react-scroll";
 
 function Service() {
   return (

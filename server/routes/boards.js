@@ -69,12 +69,14 @@ router.post("/", async (req, res) => {
     ) {
       return res.status(401).send("<script>alert</script>");
     } else {
+      console.log("데이터 생성 전");
       const createBoards = await boards.create({
         put_titl_cont,
         put_deta_cont,
         file_name: `${fileNames}`,
         user_id: userInfo.id,
       });
+      console.log("등록 완료");
       fileNames = [];
       return res.status(201).json({ data: createBoards, message: "작성 완료" });
     }

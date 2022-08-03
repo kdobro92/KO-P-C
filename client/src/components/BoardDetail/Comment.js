@@ -25,8 +25,8 @@ function Comment({ post }) {
     setPut_deta_cont(e.target.value);
   };
   const recomShowHandler = (index) => {
-    setPosts(index);
     setIsShow(!isShow);
+    setPosts(index);
   };
 
   const editCommentModal = (commentId) => {
@@ -76,7 +76,7 @@ function Comment({ post }) {
           등록
         </button>
       </div>
-      {post.comments.map((data) => {
+      {post.comments.map((data, idx) => {
         return (
           <>
             <div className="recom-total">
@@ -129,9 +129,9 @@ function Comment({ post }) {
             <button
               type="button"
               className="re-comment"
-              onClick={() => recomShowHandler(data.id)}
+              onClick={() => recomShowHandler(idx)}
             >
-              {isShow ? (
+              {isShow && idx === posts ? (
                 <span>
                   <AiOutlineMinusSquare className="hide-icon" />
                   숨기기
@@ -143,7 +143,7 @@ function Comment({ post }) {
                 </span>
               )}
             </button>
-            {isShow ? (
+            {isShow && idx === posts ? (
               <>
                 <div className="comment-sub-container">
                   <textarea
@@ -154,7 +154,16 @@ function Comment({ post }) {
                   />
                 </div>
                 <div className="save-re-container">
-                  {isOpen ? <CommentModal /> : null}
+                  {isOpen ? (
+                    <CommentModal
+                      post={post}
+                      user_nickname={user_nickname}
+                      userNickHandler={userNickHandler}
+                      put_deta_cont={put_deta_cont}
+                      setPut_deta_cont={setPut_deta_cont}
+                      recomModalHandler={recomModalHandler}
+                    />
+                  ) : null}
                   <button
                     className="re-add-btn"
                     type="button"

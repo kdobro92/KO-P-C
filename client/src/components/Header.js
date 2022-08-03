@@ -22,7 +22,7 @@ function Header({ isLogin, handleLogout }) {
         <div className="nav-inner">
           <div className="navbar-logo">
             <HiOutlineOfficeBuilding className="icon-logo" />
-            <Link to="/">SSRC</Link>
+            <Link to="/">Ko-P&C</Link>
           </div>
           <ul className={isOpen ? "navbar-menu active" : "navbar-menu"}>
             <Link to="/about">
