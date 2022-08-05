@@ -6,7 +6,7 @@ const http = require("http");
 const https = require("https");
 const path = require("path");
 const db = require("./models");
-const HTTP_PORT = process.env.HTTP_PORT || 4000;
+const HTTP_PORT = process.env.HTTP_PORT || 80;
 const server = http.createServer(app);
 
 // DB Connection
